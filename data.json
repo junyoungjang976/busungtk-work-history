@@ -1,14 +1,170 @@
 {
-  "updated_at": "2025-01-31T00:00:00Z",
-  "repos": ["busungtk-docs", "portal", "hvac-mentor"],
+  "updated_at": "2026-01-31T13:45:28.211395Z",
+  "repos": [
+    "work-history",
+    "hvac-mentor",
+    "portal",
+    "busungtk-docs"
+  ],
   "summary": {
-    "total_commits": 0,
+    "total_commits": 16,
     "total_prs": 0,
     "total_issues": 0,
-    "active_days": 0
+    "active_days": 3
   },
-  "daily": {},
-  "commits": [],
+  "daily": {
+    "2026-01-31": {
+      "commits": 11,
+      "prs_opened": 0,
+      "prs_merged": 0,
+      "issues_opened": 0,
+      "issues_closed": 0
+    },
+    "2026-01-29": {
+      "commits": 4,
+      "prs_opened": 0,
+      "prs_merged": 0,
+      "issues_opened": 0,
+      "issues_closed": 0
+    },
+    "2026-01-26": {
+      "commits": 1,
+      "prs_opened": 0,
+      "prs_merged": 0,
+      "issues_opened": 0,
+      "issues_closed": 0
+    }
+  },
+  "commits": [
+    {
+      "sha": "8638f0d",
+      "message": "🚀 Initial setup: 작업 히스토리 대시보드",
+      "author": "jangjoonyoung",
+      "date": "2026-01-31T13:45:04Z",
+      "url": "https://github.com/junyoungjang976/work-history/commit/8638f0d2f5fa7c551701f23733fb97c6f5cc9410",
+      "repo": "work-history"
+    },
+    {
+      "sha": "4428e54",
+      "message": "feat: 스마트폰 모드에 전기 회로 가이드 탭 추가",
+      "author": "jangjoonyoung",
+      "date": "2026-01-31T13:42:08Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/4428e54752f2554cc05d61f9af6dcadcfc60193c",
+      "repo": "hvac-mentor"
+    },
+    {
+      "sha": "152b83f",
+      "message": "feat: 초보 기술자를 위한 전기 회로 가이드 전면 개편",
+      "author": "jangjoonyoung",
+      "date": "2026-01-31T13:35:44Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/152b83fe7fdb02ee17424abdc64b03200dbc5d13",
+      "repo": "hvac-mentor"
+    },
+    {
+      "sha": "5f23317",
+      "message": "feat: 모바일 최적화 - 스마트폰/태블릿 별도 레이아웃",
+      "author": "jangjoonyoung",
+      "date": "2026-01-31T13:18:30Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/5f2331728828be1ef3e843cbb285abab38431c89",
+      "repo": "hvac-mentor"
+    },
+    {
+      "sha": "7803d14",
+      "message": "fix: html2canvas oklch 색상 파싱 에러 수정",
+      "author": "jangjoonyoung",
+      "date": "2026-01-31T12:56:00Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/7803d14ba4975579c83018714690182226e1f50f",
+      "repo": "hvac-mentor"
+    },
+    {
+      "sha": "4b2b452",
+      "message": "fix: 소분류 마력 정보 추가 및 데스크톱 이미지 저장 수정",
+      "author": "jangjoonyoung",
+      "date": "2026-01-31T12:47:23Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/4b2b45262de30088eebf2c4c4ac40b16eac4013d",
+      "repo": "hvac-mentor"
+    },
+    {
+      "sha": "087dd3d",
+      "message": "refactor: 고객 보고서 선택형 구조로 개선",
+      "author": "jangjoonyoung",
+      "date": "2026-01-31T12:22:54Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/087dd3da96d2204d9469c101da7f30ebaffea821",
+      "repo": "hvac-mentor"
+    },
+    {
+      "sha": "263aa70",
+      "message": "feat: 고객 보고서 기능 구현",
+      "author": "jangjoonyoung",
+      "date": "2026-01-31T12:02:42Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/263aa70acec0e3a5179255e64c8933e56dd8c6a4",
+      "repo": "hvac-mentor"
+    },
+    {
+      "sha": "f36d593",
+      "message": "feat: 전기 회로 탭 구현 및 HVAC 기술 데이터 확장",
+      "author": "jangjoonyoung",
+      "date": "2026-01-31T11:44:44Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/f36d59324b89fb231cc2bb9c281263355ce4e6fb",
+      "repo": "hvac-mentor"
+    },
+    {
+      "sha": "ef13fbb",
+      "message": "docs: Add CLAUDE.md for project documentation",
+      "author": "jangjoonyoung",
+      "date": "2026-01-31T11:03:06Z",
+      "url": "https://github.com/junyoungjang976/portal/commit/ef13fbbdc8ced16679bf54a4838e13218cf58ca1",
+      "repo": "portal"
+    },
+    {
+      "sha": "de5dc1b",
+      "message": "docs: Add CLAUDE.md for project documentation",
+      "author": "jangjoonyoung",
+      "date": "2026-01-31T11:03:02Z",
+      "url": "https://github.com/junyoungjang976/busungtk-docs/commit/de5dc1b014aacfc0f42b29af166a78289f62dfd5",
+      "repo": "busungtk-docs"
+    },
+    {
+      "sha": "a20d4a1",
+      "message": "fix: 포털 링크 수정 및 Equipment Manager 추가",
+      "author": "장준영",
+      "date": "2026-01-29T05:19:01Z",
+      "url": "https://github.com/junyoungjang976/portal/commit/a20d4a12bd9361debd3cd0e887365ad1298ecd69",
+      "repo": "portal"
+    },
+    {
+      "sha": "630315a",
+      "message": "chore: portal 초기 소스 코드",
+      "author": "장준영",
+      "date": "2026-01-29T05:17:09Z",
+      "url": "https://github.com/junyoungjang976/portal/commit/630315a56ebb27f6b6eaff467e365d98e0d0cd0f",
+      "repo": "portal"
+    },
+    {
+      "sha": "cd21852",
+      "message": "docs: 데이터베이스 마이그레이션 현황 추가",
+      "author": "장준영",
+      "date": "2026-01-29T05:02:50Z",
+      "url": "https://github.com/junyoungjang976/busungtk-docs/commit/cd21852fe4ae68a40e1f4240837316297afa23e2",
+      "repo": "busungtk-docs"
+    },
+    {
+      "sha": "e6e0cec",
+      "message": "docs: busungtk 7개 프로젝트 분석 문서화",
+      "author": "장준영",
+      "date": "2026-01-29T04:59:23Z",
+      "url": "https://github.com/junyoungjang976/busungtk-docs/commit/e6e0cec0996f03ea5f89e3e746307fa7910507c5",
+      "repo": "busungtk-docs"
+    },
+    {
+      "sha": "f5a0ab3",
+      "message": "Initial commit: HVAC Mentor app",
+      "author": "junyoungjang976",
+      "date": "2026-01-26T15:18:37Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/f5a0ab3ee944bd1d5262d296c2cfc22bac05fdd9",
+      "repo": "hvac-mentor"
+    }
+  ],
   "pull_requests": [],
   "issues": []
 }
