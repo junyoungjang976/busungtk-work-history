@@ -1,19 +1,19 @@
 {
-  "updated_at": "2026-01-31T13:52:09.524894Z",
+  "updated_at": "2026-01-31T14:03:53.990247Z",
   "repos": [
     "busungtk-docs",
     "portal",
     "hvac-mentor"
   ],
   "summary": {
-    "total_commits": 17,
+    "total_commits": 18,
     "total_prs": 0,
     "total_issues": 0,
     "active_days": 3
   },
   "daily": {
     "2026-01-31": {
-      "commits": 12,
+      "commits": 13,
       "prs_opened": 0,
       "prs_merged": 0,
       "issues_opened": 0,
@@ -35,6 +35,14 @@
     }
   },
   "commits": [
+    {
+      "sha": "6d747c6",
+      "message": "feat: 스마트폰 참조 탭에 냉동 기술 랜덤 퀴즈 추가",
+      "author": "jangjoonyoung",
+      "date": "2026-01-31T14:00:47Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/6d747c688297cb3b0594bbfb661c49b40200ef32",
+      "repo": "hvac-mentor"
+    },
     {
       "sha": "2582214",
       "message": "feat: 퀴즈 랜덤 출제 기능 추가",
