@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부성티케이 작업 히스토리</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .tab-active { border-bottom: 2px solid #3b82f6; color: #3b82f6; }
+        .activity-dot { width: 10px; height: 10px; border-radius: 2px; }
+        .commit-line:hover { background-color: #f3f4f6; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">부성티케이 작업 히스토리</h1>
+            <p class="text-gray-600 mt-2">GitHub 활동 대시보드</p>
+            <p class="text-sm text-gray-400 mt-1" id="updated-at">마지막 업데이트: 로딩 중...</p>
+        </header>
+
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-3xl font-bold text-blue-600" id="total-commits">-</div>
+                <div class="text-gray-600 text-sm">커밋</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-3xl font-bold text-green-600" id="total-prs">-</div>
+                <div class="text-gray-600 text-sm">Pull Requests</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-3xl font-bold text-purple-600" id="total-issues">-</div>
+                <div class="text-gray-600 text-sm">이슈</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-3xl font-bold text-orange-600" id="active-days">-</div>
+                <div class="text-gray-600 text-sm">활동일</div>
+            </div>
+        </div>
+
+        <!-- Activity Chart -->
+        <div class="bg-white rounded-lg shadow p-6 mb-8">
+            <h2 class="text-lg font-semibold mb-4">일별 활동</h2>
+            <canvas id="activity-chart" height="100"></canvas>
+        </div>
+
+        <!-- Repo Filter -->
+        <div class="flex gap-2 mb-4 flex-wrap" id="repo-filter">
+            <button class="px-3 py-1 rounded-full text-sm bg-blue-600 text-white" data-repo="all">전체</button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="border-b mb-4">
+            <nav class="flex gap-6">
+                <button class="pb-2 tab-active" data-tab="commits">커밋</button>
+                <button class="pb-2 text-gray-600" data-tab="prs">Pull Requests</button>
+                <button class="pb-2 text-gray-600" data-tab="issues">이슈</button>
+            </nav>
+        </div>
+
+        <!-- Content -->
+        <div id="content" class="bg-white rounded-lg shadow">
+            <div class="p-8 text-center text-gray-500">로딩 중...</div>
+        </div>
+    </div>
+
+    <script>
+        let data = null;
+        let currentTab = 'commits';
+        let currentRepo = 'all';
+        let chart = null;
+
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                data = await response.json();
+                renderDashboard();
+            } catch (error) {
+                document.getElementById('content').innerHTML =
+                    '<div class="p-8 text-center text-red-500">데이터를 불러올 수 없습니다. GitHub Actions가 실행되면 데이터가 생성됩니다.</div>';
+            }
+        }
+
+        function renderDashboard() {
+            // Update timestamp
+            const updated = new Date(data.updated_at);
+            document.getElementById('updated-at').textContent =
+                `마지막 업데이트: ${updated.toLocaleString('ko-KR')}`;
+
+            // Summary
+            document.getElementById('total-commits').textContent = data.summary.total_commits;
+            document.getElementById('total-prs').textContent = data.summary.total_prs;
+            document.getElementById('total-issues').textContent = data.summary.total_issues;
+            document.getElementById('active-days').textContent = data.summary.active_days;
+
+            // Repo filter buttons
+            const filterDiv = document.getElementById('repo-filter');
+            data.repos.forEach(repo => {
+                const btn = document.createElement('button');
+                btn.className = 'px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-700 hover:bg-gray-300';
+                btn.textContent = repo;
+                btn.dataset.repo = repo;
+                btn.onclick = () => filterByRepo(repo);
+                filterDiv.appendChild(btn);
+            });
+
+            renderChart();
+            renderContent();
+        }
+
+        function renderChart() {
+            const ctx = document.getElementById('activity-chart').getContext('2d');
+            const dates = Object.keys(data.daily).slice(0, 30).reverse();
+            const commits = dates.map(d => data.daily[d].commits);
+
+            if (chart) chart.destroy();
+
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dates.map(d => d.slice(5)),
+                    datasets: [{
+                        label: '커밋',
+                        data: commits,
+                        backgroundColor: '#3b82f6',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, ticks: { stepSize: 1 } }
+                    }
+                }
+            });
+        }
+
+        function filterByRepo(repo) {
+            currentRepo = repo;
+            document.querySelectorAll('#repo-filter button').forEach(btn => {
+                btn.className = btn.dataset.repo === repo
+                    ? 'px-3 py-1 rounded-full text-sm bg-blue-600 text-white'
+                    : 'px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-700 hover:bg-gray-300';
+            });
+            renderContent();
+        }
+
+        function renderContent() {
+            const content = document.getElementById('content');
+            let items = [];
+
+            if (currentTab === 'commits') {
+                items = data.commits.filter(c => currentRepo === 'all' || c.repo === currentRepo);
+                content.innerHTML = items.length ? items.map(c => `
+                    <div class="commit-line flex items-start gap-4 p-4 border-b">
+                        <div class="activity-dot bg-blue-500 mt-2"></div>
+                        <div class="flex-1 min-w-0">
+                            <a href="${c.url}" target="_blank" class="text-blue-600 hover:underline font-medium truncate block">${escapeHtml(c.message)}</a>
+                            <div class="text-sm text-gray-500 mt-1">
+                                <span class="bg-gray-100 px-2 py-0.5 rounded">${c.repo}</span>
+                                <span class="ml-2">${c.sha}</span>
+                                <span class="ml-2">${formatDate(c.date)}</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('') : '<div class="p-8 text-center text-gray-500">커밋이 없습니다</div>';
+            } else if (currentTab === 'prs') {
+                items = data.pull_requests.filter(p => currentRepo === 'all' || p.repo === currentRepo);
+                content.innerHTML = items.length ? items.map(p => `
+                    <div class="commit-line flex items-start gap-4 p-4 border-b">
+                        <div class="activity-dot ${p.state === 'open' ? 'bg-green-500' : p.merged_at ? 'bg-purple-500' : 'bg-red-500'} mt-2"></div>
+                        <div class="flex-1 min-w-0">
+                            <a href="${p.url}" target="_blank" class="text-blue-600 hover:underline font-medium">#${p.number} ${escapeHtml(p.title)}</a>
+                            <div class="text-sm text-gray-500 mt-1">
+                                <span class="bg-gray-100 px-2 py-0.5 rounded">${p.repo}</span>
+                                <span class="ml-2 ${p.state === 'open' ? 'text-green-600' : p.merged_at ? 'text-purple-600' : 'text-red-600'}">${p.merged_at ? '병합됨' : p.state === 'open' ? '열림' : '닫힘'}</span>
+                                <span class="ml-2">${formatDate(p.updated_at)}</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('') : '<div class="p-8 text-center text-gray-500">PR이 없습니다</div>';
+            } else {
+                items = data.issues.filter(i => currentRepo === 'all' || i.repo === currentRepo);
+                content.innerHTML = items.length ? items.map(i => `
+                    <div class="commit-line flex items-start gap-4 p-4 border-b">
+                        <div class="activity-dot ${i.state === 'open' ? 'bg-green-500' : 'bg-purple-500'} mt-2"></div>
+                        <div class="flex-1 min-w-0">
+                            <a href="${i.url}" target="_blank" class="text-blue-600 hover:underline font-medium">#${i.number} ${escapeHtml(i.title)}</a>
+                            <div class="text-sm text-gray-500 mt-1">
+                                <span class="bg-gray-100 px-2 py-0.5 rounded">${i.repo}</span>
+                                <span class="ml-2 ${i.state === 'open' ? 'text-green-600' : 'text-purple-600'}">${i.state === 'open' ? '열림' : '닫힘'}</span>
+                                ${i.labels.map(l => `<span class="ml-1 bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded text-xs">${l}</span>`).join('')}
+                                <span class="ml-2">${formatDate(i.updated_at)}</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('') : '<div class="p-8 text-center text-gray-500">이슈가 없습니다</div>';
+            }
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            const now = new Date();
+            const diff = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+            if (diff === 0) return '오늘';
+            if (diff === 1) return '어제';
+            if (diff < 7) return `${diff}일 전`;
+            return date.toLocaleDateString('ko-KR');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Tab switching
+        document.querySelectorAll('[data-tab]').forEach(btn => {
+            btn.onclick = () => {
+                currentTab = btn.dataset.tab;
+                document.querySelectorAll('[data-tab]').forEach(b => {
+                    b.className = b.dataset.tab === currentTab ? 'pb-2 tab-active' : 'pb-2 text-gray-600';
+                });
+                renderContent();
+            };
+        });
+
+        loadData();
+    </script>
+</body>
+</html>

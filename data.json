@@ -1,0 +1,14 @@
+{
+  "updated_at": "2025-01-31T00:00:00Z",
+  "repos": ["busungtk-docs", "portal", "hvac-mentor"],
+  "summary": {
+    "total_commits": 0,
+    "total_prs": 0,
+    "total_issues": 0,
+    "active_days": 0
+  },
+  "daily": {},
+  "commits": [],
+  "pull_requests": [],
+  "issues": []
+}
