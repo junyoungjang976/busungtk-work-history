@@ -1,24 +1,32 @@
 {
-  "updated_at": "2026-02-01T01:07:21.333658Z",
+  "updated_at": "2026-02-02T01:01:10.285042Z",
   "repos": [
+    "equipment-manager",
     "field-check",
-    "daily-work-report",
-    "sales-pipeline",
+    "busung-as",
     "order-tracker",
     "hvac-mentor",
-    "busung-as",
+    "kitchen-simulator",
+    "daily-work-report",
+    "sales-pipeline",
     "portal",
     "busungtk-docs",
-    "equipment-manager",
     "call-manager"
   ],
   "summary": {
-    "total_commits": 136,
+    "total_commits": 147,
     "total_prs": 0,
     "total_issues": 0,
-    "active_days": 7
+    "active_days": 8
   },
   "daily": {
+    "2026-02-01": {
+      "commits": 11,
+      "prs_opened": 0,
+      "prs_merged": 0,
+      "issues_opened": 0,
+      "issues_closed": 0
+    },
     "2026-01-31": {
       "commits": 40,
       "prs_opened": 0,
@@ -70,6 +78,94 @@
     }
   },
   "commits": [
+    {
+      "sha": "43cba23",
+      "message": "Add market research document for multi-location F&B",
+      "author": "jangjoonyoung",
+      "date": "2026-02-01T22:31:51Z",
+      "url": "https://github.com/junyoungjang976/equipment-manager/commit/43cba23f79af0b1f9f19ccad7c74d61cb9c1dffc",
+      "repo": "equipment-manager"
+    },
+    {
+      "sha": "1a30fd8",
+      "message": "chore: add migration for 'both' electrical and 'cafeteria' industry enum values",
+      "author": "jangjoonyoung",
+      "date": "2026-02-01T19:48:32Z",
+      "url": "https://github.com/junyoungjang976/field-check/commit/1a30fd816d58a877d49abecc2b707730a70cd045",
+      "repo": "field-check"
+    },
+    {
+      "sha": "6968f34",
+      "message": "feat: PDF 보고서 개선 및 미완료 데이터 경고 표시",
+      "author": "jangjoonyoung",
+      "date": "2026-02-01T19:40:58Z",
+      "url": "https://github.com/junyoungjang976/field-check/commit/6968f345e4d1c04570b6b631fdffa165f82b14d7",
+      "repo": "field-check"
+    },
+    {
+      "sha": "4ff8f69",
+      "message": "fix: 대시보드/칸반보드 Supabase 연동",
+      "author": "jangjoonyoung",
+      "date": "2026-02-01T19:31:56Z",
+      "url": "https://github.com/junyoungjang976/busung-as/commit/4ff8f69ffe993a76c230cae408da28e4ecbcd57f",
+      "repo": "busung-as"
+    },
+    {
+      "sha": "5b0b5a2",
+      "message": "feat: 채널톡 과거 데이터 임포트 API 추가",
+      "author": "jangjoonyoung",
+      "date": "2026-02-01T19:25:44Z",
+      "url": "https://github.com/junyoungjang976/busung-as/commit/5b0b5a2bdf4ab5069cefc3a70a1f4fa58811743e",
+      "repo": "busung-as"
+    },
+    {
+      "sha": "904a5e3",
+      "message": "feat: 채널톡 웹훅 연동 - 업무완료보고 자동 티켓 생성",
+      "author": "jangjoonyoung",
+      "date": "2026-02-01T19:06:43Z",
+      "url": "https://github.com/junyoungjang976/busung-as/commit/904a5e3df6aecea0aef9fc66d5e4b2b062ebd2a9",
+      "repo": "busung-as"
+    },
+    {
+      "sha": "a0ca518",
+      "message": "chore: update .gitignore for .env and temp files",
+      "author": "jangjoonyoung",
+      "date": "2026-02-01T16:58:41Z",
+      "url": "https://github.com/junyoungjang976/order-tracker/commit/a0ca518a2166aca70592b2d97f0f61259cfc7692",
+      "repo": "order-tracker"
+    },
+    {
+      "sha": "a051a32",
+      "message": "chore: add QA validation report and OMC config",
+      "author": "jangjoonyoung",
+      "date": "2026-02-01T16:58:37Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/a051a328b0bad9a2e59d5bcd414412b476be8f66",
+      "repo": "hvac-mentor"
+    },
+    {
+      "sha": "9b38f42",
+      "message": "chore: add implementation docs and OMC config",
+      "author": "jangjoonyoung",
+      "date": "2026-02-01T16:58:32Z",
+      "url": "https://github.com/junyoungjang976/field-check/commit/9b38f429466a6962d76ec255cdc62a048380d20b",
+      "repo": "field-check"
+    },
+    {
+      "sha": "103663e",
+      "message": "chore: .gitignore에 .env*.local 추가",
+      "author": "jangjoonyoung",
+      "date": "2026-02-01T16:53:48Z",
+      "url": "https://github.com/junyoungjang976/field-check/commit/103663e71293e1b73bbd7b03b3901514eed7b07f",
+      "repo": "field-check"
+    },
+    {
+      "sha": "e9fa3cd",
+      "message": "Initial commit: Kitchen layout simulator",
+      "author": "jangjoonyoung",
+      "date": "2026-02-01T16:40:54Z",
+      "url": "https://github.com/junyoungjang976/kitchen-simulator/commit/e9fa3cd313ab409169c5e06a1ca07636debe0794",
+      "repo": "kitchen-simulator"
+    },
     {
       "sha": "afb0554",
       "message": "feat: 점검 비교, 후속 조치, 이메일 발송 기능 추가",
