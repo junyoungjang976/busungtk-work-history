@@ -1,34 +1,39 @@
 {
-  "updated_at": "2026-02-02T06:49:03.379986Z",
+  "updated_at": "2026-02-03T01:01:12.559076Z",
   "repos": [
-    "equipment-manager",
-    "field-check",
-    "busung-as",
-    "order-tracker",
+    "busungtk-asms",
     "hvac-mentor",
+    "purchase-data",
+    "field-check",
+    "equipment-manager",
+    "order-tracker",
     "kitchen-simulator",
-    "daily-work-report",
     "sales-pipeline",
-    "portal",
-    "busungtk-docs",
-    "call-manager"
+    "portal"
   ],
   "summary": {
-    "total_commits": 147,
+    "total_commits": 134,
     "total_prs": 0,
     "total_issues": 0,
-    "active_days": 8
+    "active_days": 9
   },
   "daily": {
+    "2026-02-02": {
+      "commits": 12,
+      "prs_opened": 0,
+      "prs_merged": 0,
+      "issues_opened": 0,
+      "issues_closed": 0
+    },
     "2026-02-01": {
-      "commits": 11,
+      "commits": 8,
       "prs_opened": 0,
       "prs_merged": 0,
       "issues_opened": 0,
       "issues_closed": 0
     },
     "2026-01-31": {
-      "commits": 40,
+      "commits": 27,
       "prs_opened": 0,
       "prs_merged": 0,
       "issues_opened": 0,
@@ -42,7 +47,7 @@
       "issues_closed": 0
     },
     "2026-01-29": {
-      "commits": 50,
+      "commits": 48,
       "prs_opened": 0,
       "prs_merged": 0,
       "issues_opened": 0,
@@ -56,14 +61,14 @@
       "issues_closed": 0
     },
     "2026-01-27": {
-      "commits": 11,
+      "commits": 5,
       "prs_opened": 0,
       "prs_merged": 0,
       "issues_opened": 0,
       "issues_closed": 0
     },
     "2026-01-26": {
-      "commits": 4,
+      "commits": 3,
       "prs_opened": 0,
       "prs_merged": 0,
       "issues_opened": 0,
@@ -78,6 +83,102 @@
     }
   },
   "commits": [
+    {
+      "sha": "6f10993",
+      "message": "fix: TypeScript 빌드 에러 수정",
+      "author": "jangjoonyoung",
+      "date": "2026-02-02T17:39:56Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/6f1099353a3ba2167a2655bdec3d9a3d3ba88f1d",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "043db24",
+      "message": "feat: 견적서/A/S접수 상태관리 개선",
+      "author": "jangjoonyoung",
+      "date": "2026-02-02T17:37:11Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/043db24e3dede3441a2d5c7a587512ba0ec483a8",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "242ca7b",
+      "message": "feat: 견적서-A/S접수 연동 기능 개선",
+      "author": "jangjoonyoung",
+      "date": "2026-02-02T17:33:15Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/242ca7bdba83b03bfb302d31e6ed59ce7ff57981",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "ca5d0c3",
+      "message": "feat: ASMS - A/S 관리 시스템 초기 구현",
+      "author": "junyoungjang976",
+      "date": "2026-02-02T14:08:37Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/ca5d0c34afd1d7c8c86ba4a26dff3d4f02a03b1a",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "b84e446",
+      "message": "fix: 보고서 다운로드를 텍스트 파일로 변경",
+      "author": "junyoungjang976",
+      "date": "2026-02-02T10:00:51Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/b84e4466c8dba760fdc15ff02c33a99efe672525",
+      "repo": "hvac-mentor"
+    },
+    {
+      "sha": "700c0f9",
+      "message": "fix: 진단 결과 공유 기능 구현",
+      "author": "junyoungjang976",
+      "date": "2026-02-02T09:53:57Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/700c0f9cd3604c9e9cbd48912151d248c135ece5",
+      "repo": "hvac-mentor"
+    },
+    {
+      "sha": "f324409",
+      "message": "Add purchase data and viewer",
+      "author": "junyoungjang976",
+      "date": "2026-02-02T09:47:37Z",
+      "url": "https://github.com/junyoungjang976/purchase-data/commit/f324409ed97b1e2f6b03d27c954c4700965ae5c8",
+      "repo": "purchase-data"
+    },
+    {
+      "sha": "dd204c2",
+      "message": "feat: 고객용 초도 진단 시스템 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-02T09:45:18Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/dd204c2016e5910c062bf437fcdc1e3fff049e51",
+      "repo": "hvac-mentor"
+    },
+    {
+      "sha": "b78d7bb",
+      "message": "feat: 설문형 스텝바이스텝 점검 UI 구현",
+      "author": "junyoungjang976",
+      "date": "2026-02-02T08:19:54Z",
+      "url": "https://github.com/junyoungjang976/field-check/commit/b78d7bbda54331fdca118037d4e025cf547caa85",
+      "repo": "field-check"
+    },
+    {
+      "sha": "4c7423d",
+      "message": "feat: 점검 워크플로우 가이드 시스템 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-02T08:10:35Z",
+      "url": "https://github.com/junyoungjang976/field-check/commit/4c7423d844d259f36aaa09d0621ad7b38114d43e",
+      "repo": "field-check"
+    },
+    {
+      "sha": "6bd9e30",
+      "message": "feat: 3단계 점검 레벨 시스템 추가 (초급/중급/최상급)",
+      "author": "junyoungjang976",
+      "date": "2026-02-02T07:42:25Z",
+      "url": "https://github.com/junyoungjang976/field-check/commit/6bd9e30d608b7c426d134bb310a1dc7cbb356427",
+      "repo": "field-check"
+    },
+    {
+      "sha": "f298542",
+      "message": "fix: TypeScript 빌드 오류 수정",
+      "author": "junyoungjang976",
+      "date": "2026-02-02T07:15:32Z",
+      "url": "https://github.com/junyoungjang976/field-check/commit/f2985429b71c84f511b82b3c7924a35a86150892",
+      "repo": "field-check"
+    },
     {
       "sha": "43cba23",
       "message": "Add market research document for multi-location F&B",
@@ -101,30 +202,6 @@
       "date": "2026-02-01T19:40:58Z",
       "url": "https://github.com/junyoungjang976/field-check/commit/6968f345e4d1c04570b6b631fdffa165f82b14d7",
       "repo": "field-check"
-    },
-    {
-      "sha": "4ff8f69",
-      "message": "fix: 대시보드/칸반보드 Supabase 연동",
-      "author": "jangjoonyoung",
-      "date": "2026-02-01T19:31:56Z",
-      "url": "https://github.com/junyoungjang976/busung-as/commit/4ff8f69ffe993a76c230cae408da28e4ecbcd57f",
-      "repo": "busung-as"
-    },
-    {
-      "sha": "5b0b5a2",
-      "message": "feat: 채널톡 과거 데이터 임포트 API 추가",
-      "author": "jangjoonyoung",
-      "date": "2026-02-01T19:25:44Z",
-      "url": "https://github.com/junyoungjang976/busung-as/commit/5b0b5a2bdf4ab5069cefc3a70a1f4fa58811743e",
-      "repo": "busung-as"
-    },
-    {
-      "sha": "904a5e3",
-      "message": "feat: 채널톡 웹훅 연동 - 업무완료보고 자동 티켓 생성",
-      "author": "jangjoonyoung",
-      "date": "2026-02-01T19:06:43Z",
-      "url": "https://github.com/junyoungjang976/busung-as/commit/904a5e3df6aecea0aef9fc66d5e4b2b062ebd2a9",
-      "repo": "busung-as"
     },
     {
       "sha": "a0ca518",
@@ -175,78 +252,6 @@
       "repo": "field-check"
     },
     {
-      "sha": "15eef4a",
-      "message": "Add popover component",
-      "author": "jangjoonyoung",
-      "date": "2026-01-31T20:31:43Z",
-      "url": "https://github.com/junyoungjang976/daily-work-report/commit/15eef4a76b6bb589f8c0e1a0f13699c07920c2d0",
-      "repo": "daily-work-report"
-    },
-    {
-      "sha": "028effd",
-      "message": "Add date picker to daily reports page",
-      "author": "jangjoonyoung",
-      "date": "2026-01-31T20:30:51Z",
-      "url": "https://github.com/junyoungjang976/daily-work-report/commit/028effd1b5506defb2ae65bd96f5f341764dc986",
-      "repo": "daily-work-report"
-    },
-    {
-      "sha": "ed0e88a",
-      "message": "Add more debug logging",
-      "author": "jangjoonyoung",
-      "date": "2026-01-31T20:26:21Z",
-      "url": "https://github.com/junyoungjang976/daily-work-report/commit/ed0e88abc6430dae08361f53f2367c45c34e5e80",
-      "repo": "daily-work-report"
-    },
-    {
-      "sha": "79ee0c4",
-      "message": "Add debug logging to getWorkReports",
-      "author": "jangjoonyoung",
-      "date": "2026-01-31T20:24:24Z",
-      "url": "https://github.com/junyoungjang976/daily-work-report/commit/79ee0c43c220b6e364a4e76a5a7d3dce35fcc483",
-      "repo": "daily-work-report"
-    },
-    {
-      "sha": "7f607fc",
-      "message": "Fix: Use service role key for RLS bypass (no auth mode)",
-      "author": "jangjoonyoung",
-      "date": "2026-01-31T20:15:13Z",
-      "url": "https://github.com/junyoungjang976/daily-work-report/commit/7f607fc44d4012da270da5a276f32825859cd7c4",
-      "repo": "daily-work-report"
-    },
-    {
-      "sha": "4b20fe8",
-      "message": "fix: Select 컴포넌트 빈 문자열 value 수정",
-      "author": "jangjoonyoung",
-      "date": "2026-01-31T19:34:23Z",
-      "url": "https://github.com/junyoungjang976/daily-work-report/commit/4b20fe8deff85eee458de8a173a99cca9c6bbcaa",
-      "repo": "daily-work-report"
-    },
-    {
-      "sha": "6ea76c7",
-      "message": "fix: Suspense boundary 추가로 클라이언트 오류 수정",
-      "author": "jangjoonyoung",
-      "date": "2026-01-31T19:17:23Z",
-      "url": "https://github.com/junyoungjang976/daily-work-report/commit/6ea76c7b69acbe17272d8d662e4d8f73ef447fa1",
-      "repo": "daily-work-report"
-    },
-    {
-      "sha": "1199963",
-      "message": "feat: 로그인 기능 삭제",
-      "author": "jangjoonyoung",
-      "date": "2026-01-31T19:13:09Z",
-      "url": "https://github.com/junyoungjang976/daily-work-report/commit/1199963b66e6e9379f5e5e4528263484e6dd0123",
-      "repo": "daily-work-report"
-    },
-    {
-      "sha": "87f7f11",
-      "message": "chore: add storage bucket migration",
-      "author": "jangjoonyoung",
-      "date": "2026-01-31T19:09:45Z",
-      "url": "https://github.com/junyoungjang976/daily-work-report/commit/87f7f11104c2ed556eda8214bbf5e05b6cda4da9",
-      "repo": "daily-work-report"
-    },
-    {
       "sha": "dd4fa2c",
       "message": "refactor: 액션 현황 탭 불필요한 섹션 삭제",
       "author": "jangjoonyoung",
@@ -255,28 +260,12 @@
       "repo": "sales-pipeline"
     },
     {
-      "sha": "bfad890",
-      "message": "feat: 일일업무보고 웹 앱 구현",
-      "author": "jangjoonyoung",
-      "date": "2026-01-31T18:56:12Z",
-      "url": "https://github.com/junyoungjang976/daily-work-report/commit/bfad890a8a537e5a6484cf2e1b37d9ef35dc4b93",
-      "repo": "daily-work-report"
-    },
-    {
       "sha": "d89c24c",
       "message": "feat: 대규모 UI/UX 리뉴얼 및 데이터 정확성 개선",
       "author": "jangjoonyoung",
       "date": "2026-01-31T18:49:43Z",
       "url": "https://github.com/junyoungjang976/sales-pipeline/commit/d89c24cf4e2fb27ab8c74075c6bc9d3a830eae59",
       "repo": "sales-pipeline"
-    },
-    {
-      "sha": "faa2dc9",
-      "message": "Initial commit from Create Next App",
-      "author": "jangjoonyoung",
-      "date": "2026-01-31T17:37:03Z",
-      "url": "https://github.com/junyoungjang976/daily-work-report/commit/faa2dc9f3b199cc1b4eae6f077376bb780240e42",
-      "repo": "daily-work-report"
     },
     {
       "sha": "3313fa4",
@@ -469,22 +458,6 @@
       "date": "2026-01-31T11:03:06Z",
       "url": "https://github.com/junyoungjang976/portal/commit/ef13fbbdc8ced16679bf54a4838e13218cf58ca1",
       "repo": "portal"
-    },
-    {
-      "sha": "de5dc1b",
-      "message": "docs: Add CLAUDE.md for project documentation",
-      "author": "jangjoonyoung",
-      "date": "2026-01-31T11:03:02Z",
-      "url": "https://github.com/junyoungjang976/busungtk-docs/commit/de5dc1b014aacfc0f42b29af166a78289f62dfd5",
-      "repo": "busungtk-docs"
-    },
-    {
-      "sha": "bf963da",
-      "message": "docs: Add CLAUDE.md for project documentation",
-      "author": "jangjoonyoung",
-      "date": "2026-01-31T11:02:58Z",
-      "url": "https://github.com/junyoungjang976/busung-as/commit/bf963da8645d349082dde7b682b2551dd17d52c2",
-      "repo": "busung-as"
     },
     {
       "sha": "41e51e0",
@@ -855,22 +828,6 @@
       "repo": "portal"
     },
     {
-      "sha": "cd21852",
-      "message": "docs: 데이터베이스 마이그레이션 현황 추가",
-      "author": "장준영",
-      "date": "2026-01-29T05:02:50Z",
-      "url": "https://github.com/junyoungjang976/busungtk-docs/commit/cd21852fe4ae68a40e1f4240837316297afa23e2",
-      "repo": "busungtk-docs"
-    },
-    {
-      "sha": "e6e0cec",
-      "message": "docs: busungtk 7개 프로젝트 분석 문서화",
-      "author": "장준영",
-      "date": "2026-01-29T04:59:23Z",
-      "url": "https://github.com/junyoungjang976/busungtk-docs/commit/e6e0cec0996f03ea5f89e3e746307fa7910507c5",
-      "repo": "busungtk-docs"
-    },
-    {
       "sha": "959dfd1",
       "message": "fix: Properly handle Supabase join array results",
       "author": "장준영",
@@ -1087,38 +1044,6 @@
       "repo": "sales-pipeline"
     },
     {
-      "sha": "64157d0",
-      "message": "docs: 2026.01.28 작업 히스토리 추가",
-      "author": "junyoungjang976",
-      "date": "2026-01-27T18:48:53Z",
-      "url": "https://github.com/junyoungjang976/busung-as/commit/64157d02f91fe6978bfcd1f96ff0b02f2cd647da",
-      "repo": "busung-as"
-    },
-    {
-      "sha": "6af4dbb",
-      "message": "feat: Supabase vendors 테이블과 고객명 필드 연동",
-      "author": "junyoungjang976",
-      "date": "2026-01-27T18:28:30Z",
-      "url": "https://github.com/junyoungjang976/busung-as/commit/6af4dbb90040e6684583852e708b86e6f01efbfb",
-      "repo": "busung-as"
-    },
-    {
-      "sha": "c982119",
-      "message": "feat: 사용 가이드 투어 추가 및 TypeScript 오류 수정",
-      "author": "junyoungjang976",
-      "date": "2026-01-27T18:20:22Z",
-      "url": "https://github.com/junyoungjang976/busung-as/commit/c9821195b39d67fad8e5251f11e26c1a91fbe1fc",
-      "repo": "busung-as"
-    },
-    {
-      "sha": "e103e85",
-      "message": "Add README.md with project description and Vercel demo link",
-      "author": "junyoungjang976",
-      "date": "2026-01-27T18:13:09Z",
-      "url": "https://github.com/junyoungjang976/busung-as/commit/e103e85e06b6afd423b9b263544c4b51d5f5ea02",
-      "repo": "busung-as"
-    },
-    {
       "sha": "a49a411",
       "message": "Add troubleshooting guide with issue resolution notes",
       "author": "junyoungjang976",
@@ -1143,14 +1068,6 @@
       "repo": "sales-pipeline"
     },
     {
-      "sha": "57ec236",
-      "message": "feat: 부성 AS 관리 시스템 초기 구현",
-      "author": "junyoungjang976",
-      "date": "2026-01-27T17:43:55Z",
-      "url": "https://github.com/junyoungjang976/busung-as/commit/57ec236053011f3af10d5fa7be279b3979f2dc4c",
-      "repo": "busung-as"
-    },
-    {
       "sha": "230c391",
       "message": "Migrate to Supabase and add 5 new features",
       "author": "junyoungjang976",
@@ -1165,22 +1082,6 @@
       "date": "2026-01-27T17:06:25Z",
       "url": "https://github.com/junyoungjang976/sales-pipeline/commit/32fb8996c62a1265136353607c9a90a9f178dc3b",
       "repo": "sales-pipeline"
-    },
-    {
-      "sha": "14c21fd",
-      "message": "Initial commit",
-      "author": "junyoungjang976",
-      "date": "2026-01-27T16:33:16Z",
-      "url": "https://github.com/junyoungjang976/busung-as/commit/14c21fdb98380edb6594cbbca89e06e4cbb6270e",
-      "repo": "busung-as"
-    },
-    {
-      "sha": "c79983d",
-      "message": "Initial commit: Call Manager app",
-      "author": "junyoungjang976",
-      "date": "2026-01-26T15:20:44Z",
-      "url": "https://github.com/junyoungjang976/call-manager/commit/c79983d1e3ca2fb4aac8badf08bee1f09ca61953",
-      "repo": "call-manager"
     },
     {
       "sha": "f5a0ab3",
