@@ -172,6 +172,35 @@
             <canvas id="activity-chart" height="100"></canvas>
         </div>
 
+        <!-- Work Pattern Analysis -->
+        <div class="bg-white rounded-lg shadow p-6 mb-8">
+            <h2 class="text-lg font-semibold mb-4">🔍 작업 패턴 분석</h2>
+
+            <!-- Pattern Summary -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Frequent Patterns -->
+                <div>
+                    <h3 class="font-medium text-gray-700 mb-3">자주 반복되는 작업</h3>
+                    <div id="frequent-patterns" class="space-y-2"></div>
+                </div>
+
+                <!-- Project Summary -->
+                <div>
+                    <h3 class="font-medium text-gray-700 mb-3">프로젝트별 주요 작업</h3>
+                    <div id="project-summary" class="space-y-2"></div>
+                </div>
+            </div>
+
+            <!-- Insights & Checklist -->
+            <div class="mt-6 p-4 bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg border border-amber-200">
+                <h3 class="font-medium text-amber-800 mb-3">📋 다음 작업 시 체크리스트</h3>
+                <div id="work-checklist" class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm"></div>
+            </div>
+
+            <!-- Advice -->
+            <div id="pattern-advice" class="mt-4 p-3 bg-gray-50 rounded-lg text-sm text-gray-700"></div>
+        </div>
+
         <!-- Search -->
         <div class="mb-4">
             <input type="text" id="search-input" placeholder="커밋 메시지, 레포 검색..."
@@ -235,6 +264,7 @@
                 renderWeeklyGoal();
                 renderWorkTypeAnalysis();
                 renderTimeHeatmap();
+                renderWorkPatternAnalysis();
             } catch (error) {
                 document.getElementById('content').innerHTML =
                     '<div class="p-8 text-center text-red-500">데이터를 불러올 수 없습니다. GitHub Actions가 실행되면 데이터가 생성됩니다.</div>';
@@ -627,6 +657,136 @@
             }
 
             document.getElementById('time-advice').innerHTML = `<strong>${goodPoint}</strong><br><strong>${improvePoint}</strong>`;
+        }
+
+        function renderWorkPatternAnalysis() {
+            // 키워드 패턴 정의
+            const patterns = [
+                { keywords: ['모바일', 'mobile', '반응형', '스크롤', '스마트폰', '태블릿'], label: '모바일 최적화', icon: '📱', color: 'blue' },
+                { keywords: ['typescript', 'ts', '타입', 'type', '빌드 오류', 'build error', '미사용 변수'], label: 'TypeScript/빌드', icon: '🔧', color: 'red' },
+                { keywords: ['pdf', 'excel', '다운로드', '출력', '보고서'], label: 'PDF/Excel 출력', icon: '📄', color: 'green' },
+                { keywords: ['알림', 'notification', '알림톡', '이메일', 'email'], label: '알림 시스템', icon: '🔔', color: 'yellow' },
+                { keywords: ['상태', 'status', '동기화', 'sync', '워크플로우', 'flow'], label: '상태/워크플로우', icon: '🔄', color: 'purple' },
+                { keywords: ['ui', 'ux', '대시보드', '테마', '리뉴얼', '레이아웃'], label: 'UI/UX 개선', icon: '🎨', color: 'pink' },
+                { keywords: ['api', 'supabase', '채널톡', '연동', 'smtp', '인증'], label: 'API 연동', icon: '🔌', color: 'indigo' },
+                { keywords: ['모달', 'modal', '버튼', 'button', '클릭'], label: '인터랙션', icon: '👆', color: 'gray' }
+            ];
+
+            // 패턴별 카운트
+            const patternCounts = patterns.map(p => ({ ...p, count: 0, commits: [] }));
+
+            data.commits.forEach(commit => {
+                const msg = commit.message.toLowerCase();
+                patternCounts.forEach(p => {
+                    if (p.keywords.some(k => msg.includes(k))) {
+                        p.count++;
+                        if (p.commits.length < 3) p.commits.push(commit.message);
+                    }
+                });
+            });
+
+            // 상위 5개 패턴
+            const topPatterns = patternCounts.filter(p => p.count > 0).sort((a, b) => b.count - a.count).slice(0, 5);
+
+            // 프로젝트별 분석
+            const projectStats = {};
+            data.commits.forEach(commit => {
+                if (!projectStats[commit.repo]) {
+                    projectStats[commit.repo] = { count: 0, types: {} };
+                }
+                projectStats[commit.repo].count++;
+
+                const msg = commit.message.toLowerCase();
+                let type = '기타';
+                if (msg.startsWith('feat')) type = '기능';
+                else if (msg.startsWith('fix')) type = '버그수정';
+                else if (msg.startsWith('refactor')) type = '리팩토링';
+                else if (msg.startsWith('docs')) type = '문서';
+
+                projectStats[commit.repo].types[type] = (projectStats[commit.repo].types[type] || 0) + 1;
+            });
+
+            // 자주 반복되는 작업 렌더링
+            const patternsDiv = document.getElementById('frequent-patterns');
+            patternsDiv.innerHTML = topPatterns.map(p => `
+                <div class="flex items-center justify-between p-2 bg-${p.color}-50 rounded-lg">
+                    <div class="flex items-center gap-2">
+                        <span>${p.icon}</span>
+                        <span class="text-sm font-medium text-${p.color}-700">${p.label}</span>
+                    </div>
+                    <span class="text-sm font-bold text-${p.color}-600">${p.count}건</span>
+                </div>
+            `).join('');
+
+            // 프로젝트별 주요 작업 렌더링
+            const projectDiv = document.getElementById('project-summary');
+            const sortedProjects = Object.entries(projectStats).sort((a, b) => b[1].count - a[1].count).slice(0, 5);
+            projectDiv.innerHTML = sortedProjects.map(([repo, stats]) => {
+                const mainType = Object.entries(stats.types).sort((a, b) => b[1] - a[1])[0];
+                return `
+                    <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+                        <span class="text-sm font-medium text-gray-700">${repo}</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs text-gray-500">${mainType ? mainType[0] : ''} 중심</span>
+                            <span class="text-sm font-bold text-gray-600">${stats.count}건</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // 체크리스트 생성
+            const checklistDiv = document.getElementById('work-checklist');
+            const checklist = [];
+
+            if (topPatterns.find(p => p.label === '모바일 최적화')) {
+                checklist.push({ text: '모바일 반응형 테스트', sub: '가로 스크롤, 헤더 겹침 확인' });
+            }
+            if (topPatterns.find(p => p.label === 'TypeScript/빌드')) {
+                checklist.push({ text: 'TypeScript 빌드', sub: '미사용 변수, 타입 정의 확인' });
+            }
+            if (topPatterns.find(p => p.label === 'PDF/Excel 출력')) {
+                checklist.push({ text: 'PDF 출력 테스트', sub: '모바일에서도 정상 동작 확인' });
+            }
+            if (topPatterns.find(p => p.label === 'API 연동')) {
+                checklist.push({ text: 'API 연동', sub: '인증 방식, 에러 핸들링 확인' });
+            }
+            if (topPatterns.find(p => p.label === '상태/워크플로우')) {
+                checklist.push({ text: '상태 관리', sub: '동기화 로직, 플로우 정합성 확인' });
+            }
+            if (checklist.length === 0) {
+                checklist.push({ text: '코드 리뷰', sub: '변경사항 재확인' });
+            }
+
+            checklistDiv.innerHTML = checklist.map(item => `
+                <div class="flex items-start gap-2">
+                    <span class="text-amber-500">☑</span>
+                    <div>
+                        <span class="font-medium text-amber-800">${item.text}</span>
+                        <span class="text-amber-600"> - ${item.sub}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            // 조언 생성
+            const adviceDiv = document.getElementById('pattern-advice');
+            const topPattern = topPatterns[0];
+            let goodPoint = '', improvePoint = '';
+
+            if (topPattern) {
+                goodPoint = `👍 잘하는 점: ${topPattern.label} 작업을 ${topPattern.count}건 수행하며 해당 분야 경험을 쌓고 있습니다.`;
+
+                const lowPattern = patternCounts.filter(p => p.count > 0 && p.count < 3)[0];
+                if (lowPattern) {
+                    improvePoint = `💪 분발: ${lowPattern.label} 작업(${lowPattern.count}건)은 아직 경험이 적습니다.`;
+                } else {
+                    improvePoint = `💪 분발: 새로운 분야(테스트, 성능 최적화 등)에도 도전해 보세요.`;
+                }
+            } else {
+                goodPoint = '👍 잘하는 점: 다양한 작업을 수행하고 있습니다.';
+                improvePoint = '💪 분발: 커밋 메시지에 키워드를 명확히 작성하면 분석이 더 정확해집니다.';
+            }
+
+            adviceDiv.innerHTML = `<strong>${goodPoint}</strong><br><strong>${improvePoint}</strong>`;
         }
 
         function renderChart() {
