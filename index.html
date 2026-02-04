@@ -13,6 +13,7 @@
         .heatmap-cell { width: 20px; height: 20px; border-radius: 3px; font-size: 10px; display: flex; align-items: center; justify-content: center; }
         .score-ring { transform: rotate(-90deg); }
         .goal-progress { transition: width 0.5s ease-in-out; }
+        .advice-card { border-left: 4px solid; }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -25,7 +26,7 @@
         </header>
 
         <!-- Productivity Score Card -->
-        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl shadow-lg p-6 mb-8 text-white">
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-xl shadow-lg p-6 mb-4 text-white">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <!-- Main Score -->
                 <div class="flex items-center gap-6">
@@ -67,8 +68,13 @@
             </div>
         </div>
 
+        <!-- Score Advice -->
+        <div id="score-advice" class="advice-card bg-blue-50 border-blue-500 rounded-lg p-4 mb-8">
+            <p class="text-sm text-blue-800" id="score-advice-text">분석 중...</p>
+        </div>
+
         <!-- Streak & Weekly Goal -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <!-- Streak Card -->
             <div class="bg-white rounded-lg shadow p-6">
                 <div class="flex items-center justify-between mb-4">
@@ -106,6 +112,7 @@
                     <span id="weekly-percent">0%</span>
                     <span id="weekly-remaining">남은 기간: -일</span>
                 </div>
+                <div id="weekly-advice" class="mt-3 text-sm text-gray-600"></div>
             </div>
         </div>
 
@@ -130,7 +137,7 @@
         </div>
 
         <!-- Work Type Analysis & Time Heatmap -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <!-- Work Type Analysis -->
             <div class="bg-white rounded-lg shadow p-6">
                 <h3 class="text-lg font-semibold mb-4">📊 작업 유형 분석</h3>
@@ -138,6 +145,7 @@
                     <canvas id="work-type-chart" height="200"></canvas>
                 </div>
                 <div id="work-type-legend" class="mt-4 grid grid-cols-2 gap-2 text-sm"></div>
+                <div id="work-type-advice" class="mt-4 p-3 bg-gray-50 rounded-lg text-sm text-gray-700"></div>
             </div>
 
             <!-- Time Heatmap -->
@@ -154,6 +162,7 @@
                     <span>18시</span>
                     <span>24시</span>
                 </div>
+                <div id="time-advice" class="mt-4 p-3 bg-gray-50 rounded-lg text-sm text-gray-700"></div>
             </div>
         </div>
 
@@ -281,6 +290,54 @@
             else if (totalScore >= 60) message = '👍 꾸준히 발전하고 있습니다.';
             else message = '🌱 조금 더 분발해 봅시다!';
             document.getElementById('score-message').textContent = message;
+
+            // Generate detailed advice based on weakest area
+            const scoreAdvice = generateScoreAdvice(scores, totalScore);
+            document.getElementById('score-advice-text').innerHTML = scoreAdvice;
+        }
+
+        function generateScoreAdvice(scores, totalScore) {
+            const advices = [];
+            
+            // Find the weakest area
+            const areas = [
+                { name: '꾸준함', score: scores.consistency, key: 'consistency' },
+                { name: '집중도', score: scores.focus, key: 'focus' },
+                { name: '품질', score: scores.quality, key: 'quality' },
+                { name: '성장', score: scores.growth, key: 'growth' }
+            ];
+            
+            const weakest = areas.reduce((min, a) => a.score < min.score ? a : min);
+            const strongest = areas.reduce((max, a) => a.score > max.score ? a : max);
+
+            // Overall assessment
+            if (totalScore >= 85) {
+                advices.push(`<strong>💎 탁월한 성과입니다!</strong> ${strongest.name}(${strongest.score}%)이 특히 뛰어납니다.`);
+            } else if (totalScore >= 70) {
+                advices.push(`<strong>✨ 좋은 흐름입니다.</strong> ${strongest.name}이 강점이네요.`);
+            } else {
+                advices.push(`<strong>📈 성장 중입니다.</strong>`);
+            }
+
+            // Specific advice for weakest area
+            if (weakest.score < 70) {
+                switch(weakest.key) {
+                    case 'consistency':
+                        advices.push(`<span class="text-amber-700">→ 매일 작은 커밋이라도 습관화해 보세요. 하루 1커밋도 훌륭합니다.</span>`);
+                        break;
+                    case 'focus':
+                        advices.push(`<span class="text-amber-700">→ 활동일에 더 집중해서 작업해 보세요. 뽀모도로 기법을 추천합니다.</span>`);
+                        break;
+                    case 'quality':
+                        advices.push(`<span class="text-amber-700">→ 커밋 메시지에 'feat:', 'fix:' 등 prefix를 붙이면 품질 점수가 올라갑니다.</span>`);
+                        break;
+                    case 'growth':
+                        advices.push(`<span class="text-amber-700">→ 최근 활동량이 줄었습니다. 새로운 기능 개발에 도전해 보세요!</span>`);
+                        break;
+                }
+            }
+
+            return advices.join(' ');
         }
 
         function calculateProductivityScores() {
@@ -318,13 +375,17 @@
             
             let message = '';
             if (current === max && current > 0) {
-                message = '🎉 현재 최장 기록을 경신 중입니다!';
+                message = '🎉 <strong>최장 기록 경신 중!</strong> 이 흐름을 유지하세요. 오늘도 커밋하면 새 기록입니다!';
+            } else if (current >= 7) {
+                message = `🔥 <strong>일주일 연속 달성!</strong> 대단해요. 최장 기록(${max}일)까지 ${max - current}일 남았습니다.`;
+            } else if (current >= 3) {
+                message = `👍 좋은 흐름입니다! 3일 연속이면 습관 형성 시작. 7일을 목표로 해보세요.`;
             } else if (current > 0) {
-                message = `최장 기록까지 ${max - current}일 남았습니다. 화이팅!`;
+                message = `🌱 연속 기록 시작! 내일도 커밋하면 ${current + 1}일이 됩니다. 작은 커밋도 좋아요.`;
             } else {
-                message = '오늘부터 새로운 연속 기록을 시작해 보세요!';
+                message = '💡 오늘부터 새로운 연속 기록을 시작해 보세요! 작은 리팩토링이나 문서 수정도 괜찮습니다.';
             }
-            document.getElementById('streak-message').textContent = message;
+            document.getElementById('streak-message').innerHTML = message;
         }
 
         function calculateStreak() {
@@ -395,6 +456,8 @@
             
             const percent = Math.min(100, Math.round((weeklyCommits / weeklyGoal) * 100));
             const daysRemaining = 7 - (dayOfWeek === 0 ? 7 : dayOfWeek);
+            const commitsNeeded = Math.max(0, weeklyGoal - weeklyCommits);
+            const dailyNeeded = daysRemaining > 0 ? Math.ceil(commitsNeeded / daysRemaining) : commitsNeeded;
             
             document.getElementById('weekly-current').textContent = `${weeklyCommits} 커밋`;
             document.getElementById('weekly-goal-text').textContent = `목표: ${weeklyGoal} 커밋`;
@@ -411,6 +474,19 @@
             } else {
                 progressBar.className = 'goal-progress bg-gradient-to-r from-blue-400 to-blue-600 h-4 rounded-full';
             }
+
+            // Weekly advice
+            let advice = '';
+            if (percent >= 100) {
+                advice = '🎊 <strong>목표 달성!</strong> 축하합니다. 다음 주는 목표를 조금 높여볼까요?';
+            } else if (percent >= 80) {
+                advice = `👏 거의 다 왔어요! <strong>${commitsNeeded}개</strong>만 더 하면 목표 달성입니다.`;
+            } else if (daysRemaining > 0) {
+                advice = `📊 목표 달성을 위해 남은 ${daysRemaining}일간 <strong>하루 ${dailyNeeded}커밋</strong>이 필요합니다.`;
+            } else {
+                advice = `💪 이번 주는 ${percent}% 달성했습니다. 다음 주에 다시 도전하세요!`;
+            }
+            document.getElementById('weekly-advice').innerHTML = advice;
         }
 
         function renderWorkTypeAnalysis() {
@@ -466,6 +542,27 @@
                         <span>${t.label}: ${t.count}개 (${Math.round(t.count / data.commits.length * 100)}%)</span>
                     </div>
                 `).join('');
+
+            // Work type advice
+            const total = data.commits.length;
+            const featPercent = Math.round(types.feat.count / total * 100);
+            const fixPercent = Math.round(types.fix.count / total * 100);
+            const refactorPercent = Math.round(types.refactor.count / total * 100);
+            const otherPercent = Math.round(types.other.count / total * 100);
+
+            let advice = '';
+            if (featPercent >= 50) {
+                advice = '🚀 <strong>기능 개발에 집중</strong>하고 있네요! 새 기능을 빠르게 만들어내고 있습니다. 테스트 코드도 함께 작성하면 더 좋습니다.';
+            } else if (fixPercent >= 40) {
+                advice = '🔧 <strong>버그 수정이 많습니다.</strong> 테스트 코드를 먼저 작성하는 TDD를 고려해 보세요. 버그 재발을 줄일 수 있습니다.';
+            } else if (refactorPercent >= 30) {
+                advice = '✨ <strong>리팩토링을 꾸준히</strong> 하고 있네요! 코드 품질 향상에 신경쓰는 좋은 습관입니다.';
+            } else if (otherPercent >= 40) {
+                advice = '💡 커밋 메시지에 <strong>feat:, fix:</strong> 등 prefix를 붙여보세요. 작업 유형을 명확히 구분할 수 있습니다.';
+            } else {
+                advice = '⚖️ <strong>균형 잡힌 개발</strong>을 하고 있습니다. 기능 추가, 버그 수정, 리팩토링이 적절히 섞여 있어요.';
+            }
+            document.getElementById('work-type-advice').innerHTML = advice;
         }
 
         function renderTimeHeatmap() {
@@ -507,6 +604,30 @@
                     heatmapDiv.appendChild(cell);
                 }
             }
+
+            // Time advice
+            let advice = '';
+            const morningWork = hourCounts.slice(6, 12).reduce((a, b) => a + b, 0);
+            const afternoonWork = hourCounts.slice(12, 18).reduce((a, b) => a + b, 0);
+            const eveningWork = hourCounts.slice(18, 24).reduce((a, b) => a + b, 0);
+            const nightWork = hourCounts.slice(0, 6).reduce((a, b) => a + b, 0);
+            const totalWork = morningWork + afternoonWork + eveningWork + nightWork;
+
+            if (peakHour >= 22 || peakHour < 6) {
+                advice = `🌙 <strong>야간 작업이 많습니다.</strong> 건강을 위해 낮 시간대 작업을 늘려보세요. 충분한 수면이 생산성을 높입니다.`;
+            } else if (peakHour >= 6 && peakHour < 12) {
+                advice = `☀️ <strong>아침형 개발자시네요!</strong> ${peakHour}시-${peakHour+1}시가 골든타임입니다. 이 시간에 중요한 작업을 배치하세요.`;
+            } else if (peakHour >= 12 && peakHour < 18) {
+                advice = `🌤️ <strong>오후에 집중력이 높습니다.</strong> ${peakHour}시-${peakHour+1}시를 핵심 개발 시간으로 보호하세요.`;
+            } else {
+                advice = `🌆 <strong>저녁 시간대에 활발합니다.</strong> 퇴근 후 개인 프로젝트에 집중하는 패턴이네요. 번아웃에 주의하세요.`;
+            }
+
+            if (nightWork / totalWork > 0.3) {
+                advice += ' ⚠️ 새벽 작업 비중이 높습니다.';
+            }
+
+            document.getElementById('time-advice').innerHTML = advice;
         }
 
         function renderChart() {
