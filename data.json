@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-02-04T05:30:12.784173Z",
+  "updated_at": "2026-02-04T05:37:28.416179Z",
   "repos": [
-    "order-tracker",
     "busungtk-asms",
+    "order-tracker",
     "sales-pipeline",
     "portal",
     "hvac-mentor",
@@ -12,14 +12,14 @@
     "kitchen-simulator"
   ],
   "summary": {
-    "total_commits": 157,
+    "total_commits": 158,
     "total_prs": 0,
     "total_issues": 0,
     "active_days": 11
   },
   "daily": {
     "2026-02-04": {
-      "commits": 6,
+      "commits": 7,
       "prs_opened": 0,
       "prs_merged": 0,
       "issues_opened": 0,
@@ -97,6 +97,14 @@
     }
   },
   "commits": [
+    {
+      "sha": "be8b2d4",
+      "message": "feat: 견적서 작업자 배정 및 PDF/Excel 개선",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T05:33:35Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/be8b2d48ce26014e32851ed4999a502ba0a5cde0",
+      "repo": "busungtk-asms"
+    },
     {
       "sha": "3ac23a7",
       "message": "fix: 발주 취소 알림 URL을 PDF 페이지로 변경",
