@@ -1,6 +1,7 @@
 {
-  "updated_at": "2026-02-04T00:56:48.486007Z",
+  "updated_at": "2026-02-04T05:30:12.784173Z",
   "repos": [
+    "order-tracker",
     "busungtk-asms",
     "sales-pipeline",
     "portal",
@@ -8,16 +9,22 @@
     "purchase-data",
     "field-check",
     "equipment-manager",
-    "order-tracker",
     "kitchen-simulator"
   ],
   "summary": {
-    "total_commits": 151,
+    "total_commits": 157,
     "total_prs": 0,
     "total_issues": 0,
-    "active_days": 10
+    "active_days": 11
   },
   "daily": {
+    "2026-02-04": {
+      "commits": 6,
+      "prs_opened": 0,
+      "prs_merged": 0,
+      "issues_opened": 0,
+      "issues_closed": 0
+    },
     "2026-02-03": {
       "commits": 17,
       "prs_opened": 0,
@@ -90,6 +97,54 @@
     }
   },
   "commits": [
+    {
+      "sha": "3ac23a7",
+      "message": "fix: 발주 취소 알림 URL을 PDF 페이지로 변경",
+      "author": "장준영",
+      "date": "2026-02-04T05:03:42Z",
+      "url": "https://github.com/junyoungjang976/order-tracker/commit/3ac23a7b7d3ba0cd51a422d70fa6963fa7a04a9b",
+      "repo": "order-tracker"
+    },
+    {
+      "sha": "590ab14",
+      "message": "fix: 발주 취소 알림톡에 발주서 URL 변수 추가",
+      "author": "장준영",
+      "date": "2026-02-04T04:54:55Z",
+      "url": "https://github.com/junyoungjang976/order-tracker/commit/590ab14d8ad35381316fba35635049a66ee9ffcb",
+      "repo": "order-tracker"
+    },
+    {
+      "sha": "8ba7940",
+      "message": "style: 좌우 스크롤 안내 텍스트 색상 변경 (빨간색)",
+      "author": "장준영",
+      "date": "2026-02-04T01:30:55Z",
+      "url": "https://github.com/junyoungjang976/order-tracker/commit/8ba7940933c7c36c412401a3e7322e55704395fc",
+      "repo": "order-tracker"
+    },
+    {
+      "sha": "4797d99",
+      "message": "fix: 모바일 품목 테이블에 좌우 스크롤 안내 메시지 추가",
+      "author": "장준영",
+      "date": "2026-02-04T01:23:51Z",
+      "url": "https://github.com/junyoungjang976/order-tracker/commit/4797d996f6894812fdac866f27bbd6d9140660e4",
+      "repo": "order-tracker"
+    },
+    {
+      "sha": "7d2cb79",
+      "message": "fix: 발주서(OrderPDF) 모바일 최적화",
+      "author": "장준영",
+      "date": "2026-02-04T01:14:33Z",
+      "url": "https://github.com/junyoungjang976/order-tracker/commit/7d2cb7969bb750cac19b49076e21d93eada4e35b",
+      "repo": "order-tracker"
+    },
+    {
+      "sha": "5018e3d",
+      "message": "fix: 견적 요청서 모바일 최적화 및 취소 안내 발주서 링크 추가",
+      "author": "장준영",
+      "date": "2026-02-04T01:05:20Z",
+      "url": "https://github.com/junyoungjang976/order-tracker/commit/5018e3ddf842dd8018046f88be39d0b572555828",
+      "repo": "order-tracker"
+    },
     {
       "sha": "cefed97",
       "message": "fix: Vercel SPA 라우팅 설정 추가",
