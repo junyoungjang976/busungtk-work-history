@@ -1,25 +1,33 @@
 {
-  "updated_at": "2026-02-04T06:01:43.940058Z",
+  "updated_at": "2026-02-05T00:59:30.428450Z",
   "repos": [
     "busungtk-asms",
+    "equipment-manager",
+    "as-diagnosis-tool",
+    "portal",
     "order-tracker",
     "sales-pipeline",
-    "portal",
     "hvac-mentor",
     "purchase-data",
     "field-check",
-    "equipment-manager",
     "kitchen-simulator"
   ],
   "summary": {
-    "total_commits": 160,
+    "total_commits": 190,
     "total_prs": 0,
     "total_issues": 0,
-    "active_days": 11
+    "active_days": 12
   },
   "daily": {
+    "2026-02-05": {
+      "commits": 1,
+      "prs_opened": 0,
+      "prs_merged": 0,
+      "issues_opened": 0,
+      "issues_closed": 0
+    },
     "2026-02-04": {
-      "commits": 9,
+      "commits": 38,
       "prs_opened": 0,
       "prs_merged": 0,
       "issues_opened": 0,
@@ -97,6 +105,246 @@
     }
   },
   "commits": [
+    {
+      "sha": "d39a7cc",
+      "message": "fix: 견적서 삭제 시 연결된 A/S 접수 차단 로직 제거",
+      "author": "junyoungjang976",
+      "date": "2026-02-05T00:36:52Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/d39a7cc90e6829294585e194b4b004f99dc9b1ec",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "6a89284",
+      "message": "feat: 재무/자산 관리 기능 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T14:46:22Z",
+      "url": "https://github.com/junyoungjang976/equipment-manager/commit/6a89284224b0198aa42dfc10164d3d7a679b6a13",
+      "repo": "equipment-manager"
+    },
+    {
+      "sha": "c4ed22a",
+      "message": "fix: Vercel 배포용 Prisma generate 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T14:45:02Z",
+      "url": "https://github.com/junyoungjang976/as-diagnosis-tool/commit/c4ed22aa0176b81be6993203d950804e5c3c38e7",
+      "repo": "as-diagnosis-tool"
+    },
+    {
+      "sha": "6604a9d",
+      "message": "fix: TypeScript 타입 오류 수정",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T14:43:53Z",
+      "url": "https://github.com/junyoungjang976/as-diagnosis-tool/commit/6604a9da0778661e8a96c39c1331fc6a24a6450d",
+      "repo": "as-diagnosis-tool"
+    },
+    {
+      "sha": "563fa01",
+      "message": "feat: 설비 A/S 진단 도구 초기 버전",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T14:41:18Z",
+      "url": "https://github.com/junyoungjang976/as-diagnosis-tool/commit/563fa010a07b17f8c1b7ca17583e4efc235785e2",
+      "repo": "as-diagnosis-tool"
+    },
+    {
+      "sha": "c8ea712",
+      "message": "refactor: 코드 품질 개선 및 QuoteForm 컴포넌트 분리",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T13:52:38Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/c8ea7120fa1179632194b6f0916834e04cd5fee5",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "5ef9194",
+      "message": "Fix Equipment Manager link, update CLAUDE.md",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T13:12:02Z",
+      "url": "https://github.com/junyoungjang976/portal/commit/5ef919443b8a9ac3f7e84715e52d957344f5f504",
+      "repo": "portal"
+    },
+    {
+      "sha": "5b5a6ec",
+      "message": "직접 수리 워크플로우 삭제",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T12:28:26Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/5b5a6eca4621bd345b1e70293c706d2dc782699f",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "8e36a3b",
+      "message": "revert: Price ratio selector back to Osulloc-only",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T12:22:17Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/8e36a3b16634ff573703d1795a257d6b9e603bb7",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "c49da8c",
+      "message": "Remove Call Manager, reorder apps",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T12:20:41Z",
+      "url": "https://github.com/junyoungjang976/portal/commit/c49da8c484a03259849ad477389a4a8af623f607",
+      "repo": "portal"
+    },
+    {
+      "sha": "42621bb",
+      "message": "feat: Show price ratio selector for all customers",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T12:19:17Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/42621bbe2d5ef5b30d2ddacc1cd216595fdd178b",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "1d40957",
+      "message": "fix: Extract quote amounts as purchase price (매입가)",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T12:14:45Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/1d4095751efccd0bd85d1d68f1898923593f6c6d",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "4b0352d",
+      "message": "fix: Update Gemini model to gemini-2.0-flash",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T12:11:09Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/4b0352dd29959687f2cbaca7cf30f59ec818b898",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "e178e8c",
+      "message": "feat: Switch OCR to Google Gemini API",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T12:08:13Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/e178e8c43bba8243358b37b6d2dae73a4c58199b",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "ac9aea5",
+      "message": "feat: Switch OCR from OpenAI to OCR.space",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T12:00:29Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/ac9aea557760d5b96d5d8d71bdd22c0f038a02f6",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "a17fe4a",
+      "message": "feat: Add price ratio selector for Osulloc quote items",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T08:25:19Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/a17fe4aac875b7464d4a6a6001b1bb5de30489fd",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "f5533ef",
+      "message": "fix: Add auth headers to channeltalk-sync API call",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T08:09:53Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/f5533efb40e007bf59df3d11df87aefac6ae5d75",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "c2f0ba5",
+      "message": "fix: channeltalk-sync CORS 헤더 수정",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T08:03:24Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/c2f0ba5c46841a573b143274b2740663dd608572",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "b683964",
+      "message": "feat: 워크플로우 알림 자동 발송 기능 + CORS 수정",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T07:59:05Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/b68396484f3ab48510d0275eba93e07dd6e180a3",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "cb49fe9",
+      "message": "feat: 외주업체/제조사 대리점 관리 기능 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T07:50:25Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/cb49fe93407b54aba92138089f09c51a93971abc",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "60c977f",
+      "message": "feat: 발주 상세 업체 정보에 담당자/이메일 표기 추가",
+      "author": "장준영",
+      "date": "2026-02-04T07:36:11Z",
+      "url": "https://github.com/junyoungjang976/order-tracker/commit/60c977f65531b70d959cd2e661ff1fa58b16a4b1",
+      "repo": "order-tracker"
+    },
+    {
+      "sha": "0d46e1d",
+      "message": "chore: OCR 모델을 GPT-4o-mini로 변경 (비용 절감)",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T07:34:27Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/0d46e1d147e2d54f3b9ecd0c90d0828e62001878",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "626a110",
+      "message": "feat: 견적서 이미지 OCR 추출 및 A/S 목록 인라인 편집 기능",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T07:08:57Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/626a11025f57bbe7e02d8a87d1f084c1c478bf81",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "e835b35",
+      "message": "feat: A/S 접수 선택 모달에 상태 필터 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T06:59:28Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/e835b35963916b0a38acf3ebe8032e72b46d7b21",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "1fb439d",
+      "message": "feat: 업체 정보 표시 개선 및 발주 목록 정보 추가",
+      "author": "장준영",
+      "date": "2026-02-04T06:55:07Z",
+      "url": "https://github.com/junyoungjang976/order-tracker/commit/1fb439d5e91d320a6bfd8f37b15c0298acb992ba",
+      "repo": "order-tracker"
+    },
+    {
+      "sha": "c33bd4d",
+      "message": "feat: A/S 목록에 워크플로우 진행률 컬럼 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T06:53:49Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/c33bd4dff3c2a530adfb52cf1e7d07f6df641b48",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "624f49c",
+      "message": "fix: 고객명에 '오설록' 포함 시에도 단가 빠른 추가 표시",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T06:50:54Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/624f49cd625307c2c289c6bab0e5b51142a850c3",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "0070907",
+      "message": "feat: 오설록 단가 기준표 실제 데이터 적용",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T06:43:48Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/0070907220685cc98459598a7109f4956d76640b",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "51bb86e",
+      "message": "fix: 삭제된 A/S 접수 채널톡 동기화 시 재생성 방지",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T06:34:59Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/51bb86ef540f1bf5458aa8020aa68ad950b9fb77",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "8476abf",
+      "message": "feat: 수리 유형 판단 워크플로우 시스템 구현",
+      "author": "junyoungjang976",
+      "date": "2026-02-04T06:16:24Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/8476abfb83365167233dd654160f2d9f72e520e5",
+      "repo": "busungtk-asms"
+    },
     {
       "sha": "d2758e5",
       "message": "feat: 견적서에 오설록 단가 자동 선택 기능 추가",
