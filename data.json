@@ -1,24 +1,31 @@
 {
-  "updated_at": "2026-02-06T00:56:40.845691Z",
+  "updated_at": "2026-02-06T12:29:48.024452Z",
   "repos": [
+    "as-diagnosis-tool",
+    "kitchen-simulator",
     "equipment-manager",
     "busungtk-asms",
-    "as-diagnosis-tool",
     "portal",
     "order-tracker",
     "sales-pipeline",
     "hvac-mentor",
     "purchase-data",
-    "field-check",
-    "kitchen-simulator"
+    "field-check"
   ],
   "summary": {
-    "total_commits": 192,
+    "total_commits": 198,
     "total_prs": 0,
     "total_issues": 0,
-    "active_days": 12
+    "active_days": 13
   },
   "daily": {
+    "2026-02-06": {
+      "commits": 6,
+      "prs_opened": 0,
+      "prs_merged": 0,
+      "issues_opened": 0,
+      "issues_closed": 0
+    },
     "2026-02-05": {
       "commits": 3,
       "prs_opened": 0,
@@ -105,6 +112,54 @@
     }
   },
   "commits": [
+    {
+      "sha": "e901bff",
+      "message": "Update CLAUDE.md - Supabase project operating rules",
+      "author": "junyoungjang976",
+      "date": "2026-02-06T12:29:43Z",
+      "url": "https://github.com/junyoungjang976/field-check/commit/e901bff316273a38b1c73d7f53ecb464d3d588b3",
+      "repo": "field-check"
+    },
+    {
+      "sha": "bf02f2a",
+      "message": "Update CLAUDE.md - Supabase project operating rules",
+      "author": "junyoungjang976",
+      "date": "2026-02-06T12:29:42Z",
+      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/bf02f2a0ae1e5de5dc1ee9b88be974605a5ae506",
+      "repo": "hvac-mentor"
+    },
+    {
+      "sha": "6135614",
+      "message": "Update CLAUDE.md - Supabase project operating rules",
+      "author": "junyoungjang976",
+      "date": "2026-02-06T12:29:39Z",
+      "url": "https://github.com/junyoungjang976/portal/commit/61356143b09be183d4fabe45d87df2abb5560688",
+      "repo": "portal"
+    },
+    {
+      "sha": "b01d926",
+      "message": "Add CLAUDE.md - Supabase project operating rules",
+      "author": "junyoungjang976",
+      "date": "2026-02-06T12:29:24Z",
+      "url": "https://github.com/junyoungjang976/purchase-data/commit/b01d926eec0ad36ef437deb891315dec8f76b40d",
+      "repo": "purchase-data"
+    },
+    {
+      "sha": "769bba0",
+      "message": "Add CLAUDE.md - Supabase project operating rules",
+      "author": "junyoungjang976",
+      "date": "2026-02-06T12:29:23Z",
+      "url": "https://github.com/junyoungjang976/as-diagnosis-tool/commit/769bba07567e2480aadcb902743f9bbd41cdc5b6",
+      "repo": "as-diagnosis-tool"
+    },
+    {
+      "sha": "09260b6",
+      "message": "Add CLAUDE.md - Supabase project operating rules",
+      "author": "junyoungjang976",
+      "date": "2026-02-06T12:29:23Z",
+      "url": "https://github.com/junyoungjang976/kitchen-simulator/commit/09260b6c4da746e250f63c8977805a483bc81b99",
+      "repo": "kitchen-simulator"
+    },
     {
       "sha": "306a488",
       "message": "feat: CAD 스타일 도면 생성 - 건축 도면 형식의 주방 설비 배치도",
