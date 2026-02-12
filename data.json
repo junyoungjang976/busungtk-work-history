@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-11T15:11:31.965468Z",
+  "updated_at": "2026-02-12T01:01:31.431611Z",
   "repos": [
     "busungtk-asms",
     "marketing-hub",
@@ -24,11 +24,18 @@
     "total_commits": 321,
     "total_prs": 2,
     "total_issues": 0,
-    "active_days": 18
+    "active_days": 19
   },
   "daily": {
+    "2026-02-12": {
+      "commits": 3,
+      "prs_opened": 0,
+      "prs_merged": 0,
+      "issues_opened": 0,
+      "issues_closed": 0
+    },
     "2026-02-11": {
-      "commits": 25,
+      "commits": 28,
       "prs_opened": 0,
       "prs_merged": 0,
       "issues_opened": 0,
@@ -77,7 +84,7 @@
       "issues_closed": 0
     },
     "2026-02-04": {
-      "commits": 32,
+      "commits": 26,
       "prs_opened": 0,
       "prs_merged": 0,
       "issues_opened": 0,
@@ -155,6 +162,54 @@
     }
   },
   "commits": [
+    {
+      "sha": "c5b0a5a",
+      "message": "feat: 견적서 품목 검색 모달에 품목 수정 버튼 및 수정 이력 기록 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-12T01:01:02Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/c5b0a5a96ddd2d1d857a6468da64812cb081e981",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "63cad47",
+      "message": "fix: 견적서 연결 해제 빌드 에러 수정 (request_number null 처리)",
+      "author": "junyoungjang976",
+      "date": "2026-02-12T00:39:04Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/63cad474fb9ce80bc1c3486302d29ce885d88c30",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "67b2c87",
+      "message": "feat: A/S 상세 페이지에서 연결된 견적서 삭제(연결 해제) 버튼 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-12T00:24:16Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/67b2c87d15467a2a71cb971676eabbaaac7a82aa",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "df50a8e",
+      "message": "feat: 상태 필터를 버튼 방식으로 변경, A/S 접수 필터 URL 파라미터 유지",
+      "author": "junyoungjang976",
+      "date": "2026-02-11T15:30:41Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/df50a8e4f91e6d2f2b559c58a7a3b60d93a78d65",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "5c55b58",
+      "message": "feat: 대시보드 작업 흐름 현황에 견적서 기준 탭 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-11T15:20:23Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/5c55b5801cf29c88763902598014a855ec3fbe95",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "3e3b0ea",
+      "message": "fix: 빌드 에러 수정 (free_service 상태 누락, 미사용 변수 제거)",
+      "author": "junyoungjang976",
+      "date": "2026-02-11T15:15:22Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/3e3b0eaf60bc62ad8017b210107215e7a59dea75",
+      "repo": "busungtk-asms"
+    },
     {
       "sha": "7411982",
       "message": "feat: 부가세 별도/포함 선택, 음수 단가, 무상 처리, A/S 접수-견적서 N:N 연결",
@@ -1580,60 +1635,12 @@
       "repo": "order-tracker"
     },
     {
-      "sha": "0d46e1d",
-      "message": "chore: OCR 모델을 GPT-4o-mini로 변경 (비용 절감)",
-      "author": "junyoungjang976",
-      "date": "2026-02-04T07:34:27Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/0d46e1d147e2d54f3b9ecd0c90d0828e62001878",
-      "repo": "busungtk-asms"
-    },
-    {
-      "sha": "626a110",
-      "message": "feat: 견적서 이미지 OCR 추출 및 A/S 목록 인라인 편집 기능",
-      "author": "junyoungjang976",
-      "date": "2026-02-04T07:08:57Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/626a11025f57bbe7e02d8a87d1f084c1c478bf81",
-      "repo": "busungtk-asms"
-    },
-    {
-      "sha": "e835b35",
-      "message": "feat: A/S 접수 선택 모달에 상태 필터 추가",
-      "author": "junyoungjang976",
-      "date": "2026-02-04T06:59:28Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/e835b35963916b0a38acf3ebe8032e72b46d7b21",
-      "repo": "busungtk-asms"
-    },
-    {
       "sha": "1fb439d",
       "message": "feat: 업체 정보 표시 개선 및 발주 목록 정보 추가",
       "author": "장준영",
       "date": "2026-02-04T06:55:07Z",
       "url": "https://github.com/junyoungjang976/order-tracker/commit/1fb439d5e91d320a6bfd8f37b15c0298acb992ba",
       "repo": "order-tracker"
-    },
-    {
-      "sha": "c33bd4d",
-      "message": "feat: A/S 목록에 워크플로우 진행률 컬럼 추가",
-      "author": "junyoungjang976",
-      "date": "2026-02-04T06:53:49Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/c33bd4dff3c2a530adfb52cf1e7d07f6df641b48",
-      "repo": "busungtk-asms"
-    },
-    {
-      "sha": "624f49c",
-      "message": "fix: 고객명에 '오설록' 포함 시에도 단가 빠른 추가 표시",
-      "author": "junyoungjang976",
-      "date": "2026-02-04T06:50:54Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/624f49cd625307c2c289c6bab0e5b51142a850c3",
-      "repo": "busungtk-asms"
-    },
-    {
-      "sha": "0070907",
-      "message": "feat: 오설록 단가 기준표 실제 데이터 적용",
-      "author": "junyoungjang976",
-      "date": "2026-02-04T06:43:48Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/0070907220685cc98459598a7109f4956d76640b",
-      "repo": "busungtk-asms"
     },
     {
       "sha": "3ac23a7",
