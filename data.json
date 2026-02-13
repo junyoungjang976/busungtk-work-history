@@ -1,7 +1,8 @@
 {
-  "updated_at": "2026-02-12T01:01:31.431611Z",
+  "updated_at": "2026-02-13T01:05:36.077784Z",
   "repos": [
     "busungtk-asms",
+    "order-tracker",
     "marketing-hub",
     "sales-crm",
     "daily-report",
@@ -17,18 +18,24 @@
     "hvac-mentor",
     "sales-pipeline",
     "field-check",
-    "order-tracker",
     "ai-ideation-lab"
   ],
   "summary": {
-    "total_commits": 321,
+    "total_commits": 324,
     "total_prs": 2,
     "total_issues": 0,
-    "active_days": 19
+    "active_days": 20
   },
   "daily": {
+    "2026-02-13": {
+      "commits": 5,
+      "prs_opened": 0,
+      "prs_merged": 0,
+      "issues_opened": 0,
+      "issues_closed": 0
+    },
     "2026-02-12": {
-      "commits": 3,
+      "commits": 9,
       "prs_opened": 0,
       "prs_merged": 0,
       "issues_opened": 0,
@@ -84,7 +91,7 @@
       "issues_closed": 0
     },
     "2026-02-04": {
-      "commits": 26,
+      "commits": 18,
       "prs_opened": 0,
       "prs_merged": 0,
       "issues_opened": 0,
@@ -162,6 +169,94 @@
     }
   },
   "commits": [
+    {
+      "sha": "7059edb",
+      "message": "fix: 견적서/거래명세표 Excel A4 페이지 채움 개선",
+      "author": "junyoungjang976",
+      "date": "2026-02-13T00:54:32Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/7059edb8a0a7394c44d173ae69a439d52dee7152",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "0af436c",
+      "message": "fix: 알림톡 URL 중복 https:// 제거",
+      "author": "장준영",
+      "date": "2026-02-13T00:47:04Z",
+      "url": "https://github.com/junyoungjang976/order-tracker/commit/0af436cfbee32034fd6616f98f44343ba3208aa2",
+      "repo": "order-tracker"
+    },
+    {
+      "sha": "430b11f",
+      "message": "feat: 견적 요청 알림톡 발송 기능 추가",
+      "author": "장준영",
+      "date": "2026-02-13T00:36:57Z",
+      "url": "https://github.com/junyoungjang976/order-tracker/commit/430b11f5a695bf3e46e0cfa68e152b6316a48e20",
+      "repo": "order-tracker"
+    },
+    {
+      "sha": "4961e9d",
+      "message": "feat: 견적서/거래명세표 PDF A4 크기에 맞춰 빈 행 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-13T00:36:31Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/4961e9d57bcb7468e528bfa97f32c260edd956bf",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "5e72c16",
+      "message": "fix: A/S 페이지에서 견적서 작성 시 고객 선택 안되는 버그 수정",
+      "author": "junyoungjang976",
+      "date": "2026-02-13T00:26:57Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/5e72c16011dd4234ef9237968acd8b1fb3a87c6d",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "77aaf4f",
+      "message": "feat: 선금 업체 발주 확정 경로 추가 (견적 요청 건너뛰기)",
+      "author": "장준영",
+      "date": "2026-02-12T02:49:27Z",
+      "url": "https://github.com/junyoungjang976/order-tracker/commit/77aaf4fd6d079a41d418a2b7495f4268d6862550",
+      "repo": "order-tracker"
+    },
+    {
+      "sha": "b4474e6",
+      "message": "feat: 견적서 상세 페이지 품목 테이블에 비고 컬럼 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-12T02:20:26Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/b4474e6fa34bb4b1f7c80b4e66de7bf5dd1b6e64",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "dcc0016",
+      "message": "feat: 고객/견적서/업체 수정 이력 로그 시스템 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-12T02:17:07Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/dcc00166c4b0a4e736cda211e9b741749c72e597",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "fa6851e",
+      "message": "feat: 세금계산서 상태 변경 모달에 고객 기본 정보 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-12T02:14:49Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/fa6851ef3cda3ae3dc6c32a247d3db312c8581b1",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "e2e39d0",
+      "message": "feat: 거래명세표 자동 생성 범위 확대 + 목록 최신순 정렬",
+      "author": "junyoungjang976",
+      "date": "2026-02-12T02:05:03Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/e2e39d042893f17714cf61c01da1bfbf9a9cb182",
+      "repo": "busungtk-asms"
+    },
+    {
+      "sha": "64149e5",
+      "message": "feat: 품목 수정 이력 조회 화면 추가 (품목 상세 + 검색 모달)",
+      "author": "junyoungjang976",
+      "date": "2026-02-12T01:56:34Z",
+      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/64149e5f86924a17e911296ac6d472ac00c75efe",
+      "repo": "busungtk-asms"
+    },
     {
       "sha": "c5b0a5a",
       "message": "feat: 견적서 품목 검색 모달에 품목 수정 버튼 및 수정 이력 기록 추가",
@@ -1563,70 +1658,6 @@
       "repo": "busungtk-asms"
     },
     {
-      "sha": "4b0352d",
-      "message": "fix: Update Gemini model to gemini-2.0-flash",
-      "author": "junyoungjang976",
-      "date": "2026-02-04T12:11:09Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/4b0352dd29959687f2cbaca7cf30f59ec818b898",
-      "repo": "busungtk-asms"
-    },
-    {
-      "sha": "e178e8c",
-      "message": "feat: Switch OCR to Google Gemini API",
-      "author": "junyoungjang976",
-      "date": "2026-02-04T12:08:13Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/e178e8c43bba8243358b37b6d2dae73a4c58199b",
-      "repo": "busungtk-asms"
-    },
-    {
-      "sha": "ac9aea5",
-      "message": "feat: Switch OCR from OpenAI to OCR.space",
-      "author": "junyoungjang976",
-      "date": "2026-02-04T12:00:29Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/ac9aea557760d5b96d5d8d71bdd22c0f038a02f6",
-      "repo": "busungtk-asms"
-    },
-    {
-      "sha": "a17fe4a",
-      "message": "feat: Add price ratio selector for Osulloc quote items",
-      "author": "junyoungjang976",
-      "date": "2026-02-04T08:25:19Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/a17fe4aac875b7464d4a6a6001b1bb5de30489fd",
-      "repo": "busungtk-asms"
-    },
-    {
-      "sha": "f5533ef",
-      "message": "fix: Add auth headers to channeltalk-sync API call",
-      "author": "junyoungjang976",
-      "date": "2026-02-04T08:09:53Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/f5533efb40e007bf59df3d11df87aefac6ae5d75",
-      "repo": "busungtk-asms"
-    },
-    {
-      "sha": "c2f0ba5",
-      "message": "fix: channeltalk-sync CORS 헤더 수정",
-      "author": "junyoungjang976",
-      "date": "2026-02-04T08:03:24Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/c2f0ba5c46841a573b143274b2740663dd608572",
-      "repo": "busungtk-asms"
-    },
-    {
-      "sha": "b683964",
-      "message": "feat: 워크플로우 알림 자동 발송 기능 + CORS 수정",
-      "author": "junyoungjang976",
-      "date": "2026-02-04T07:59:05Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/b68396484f3ab48510d0275eba93e07dd6e180a3",
-      "repo": "busungtk-asms"
-    },
-    {
-      "sha": "cb49fe9",
-      "message": "feat: 외주업체/제조사 대리점 관리 기능 추가",
-      "author": "junyoungjang976",
-      "date": "2026-02-04T07:50:25Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/cb49fe93407b54aba92138089f09c51a93971abc",
-      "repo": "busungtk-asms"
-    },
-    {
       "sha": "60c977f",
       "message": "feat: 발주 상세 업체 정보에 담당자/이메일 표기 추가",
       "author": "장준영",
@@ -1737,30 +1768,6 @@
       "date": "2026-02-02T09:47:37Z",
       "url": "https://github.com/junyoungjang976/purchase-data/commit/f324409ed97b1e2f6b03d27c954c4700965ae5c8",
       "repo": "purchase-data"
-    },
-    {
-      "sha": "dd204c2",
-      "message": "feat: 고객용 초도 진단 시스템 추가",
-      "author": "junyoungjang976",
-      "date": "2026-02-02T09:45:18Z",
-      "url": "https://github.com/junyoungjang976/hvac-mentor/commit/dd204c2016e5910c062bf437fcdc1e3fff049e51",
-      "repo": "hvac-mentor"
-    },
-    {
-      "sha": "b78d7bb",
-      "message": "feat: 설문형 스텝바이스텝 점검 UI 구현",
-      "author": "junyoungjang976",
-      "date": "2026-02-02T08:19:54Z",
-      "url": "https://github.com/junyoungjang976/field-check/commit/b78d7bbda54331fdca118037d4e025cf547caa85",
-      "repo": "field-check"
-    },
-    {
-      "sha": "4c7423d",
-      "message": "feat: 점검 워크플로우 가이드 시스템 추가",
-      "author": "junyoungjang976",
-      "date": "2026-02-02T08:10:35Z",
-      "url": "https://github.com/junyoungjang976/field-check/commit/4c7423d844d259f36aaa09d0621ad7b38114d43e",
-      "repo": "field-check"
     }
   ],
   "pull_requests": [
