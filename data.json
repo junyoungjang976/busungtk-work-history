@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-02-14T02:29:01.750020Z",
+  "updated_at": "2026-02-15T01:03:52.136672Z",
   "repos": [
+    "busungtk-hub",
+    "busungtk-marketing",
     "busungtk-sales-pipeline",
     "busungtk-sales-crm",
     "busungtk-purchase-data",
     "busungtk-portal",
     "busungtk-order-tracker",
-    "busungtk-marketing",
     "busungtk-landing",
     "busungtk-kitchen-simulator",
     "busungtk-kitchen-planner",
     "busungtk-hvac-mentor",
-    "busungtk-hub",
     "busungtk-equipment",
     "busungtk-asms",
     "busungtk-field-check",
@@ -21,14 +21,14 @@
     "busungtk-ai-trends"
   ],
   "summary": {
-    "total_commits": 364,
+    "total_commits": 373,
     "total_prs": 2,
     "total_issues": 0,
     "active_days": 21
   },
   "daily": {
     "2026-02-14": {
-      "commits": 42,
+      "commits": 51,
       "prs_opened": 0,
       "prs_merged": 0,
       "issues_opened": 0,
@@ -177,6 +177,78 @@
   },
   "commits": [
     {
+      "sha": "e30b020",
+      "message": "feat: Phase 4-8 구현 + 견적서 연동 + 채널톡 동기화",
+      "author": "junyoungjang976",
+      "date": "2026-02-14T18:35:20Z",
+      "url": "https://github.com/junyoungjang976/busungtk-hub/commit/e30b0208273de7093cdaf3024d7c927c2b859cff",
+      "repo": "busungtk-hub"
+    },
+    {
+      "sha": "a787eae",
+      "message": "feat: GA4 연동, 대시보드 기간필터, 캠페인 표시명",
+      "author": "jangj",
+      "date": "2026-02-14T17:44:29Z",
+      "url": "https://github.com/junyoungjang976/busungtk-marketing/commit/a787eae04d7865416ae0d4e134f267f39aa2995a",
+      "repo": "busungtk-marketing"
+    },
+    {
+      "sha": "0119c2b",
+      "message": "feat: 광고 API 원클릭 동기화, 성과 UI 개선, 인사이트 리뉴얼",
+      "author": "jangj",
+      "date": "2026-02-14T15:57:16Z",
+      "url": "https://github.com/junyoungjang976/busungtk-marketing/commit/0119c2b71a6544a41babfd96dc9f438f4d1a1d18",
+      "repo": "busungtk-marketing"
+    },
+    {
+      "sha": "d4b3077",
+      "message": "feat: Phase 3 발주관리(Order Tracker) 모듈 구현",
+      "author": "junyoungjang976",
+      "date": "2026-02-14T15:15:40Z",
+      "url": "https://github.com/junyoungjang976/busungtk-hub/commit/d4b307771ae4e847d403bc6b64c7c8620610677e",
+      "repo": "busungtk-hub"
+    },
+    {
+      "sha": "3b49fb4",
+      "message": "feat: Phase 2 현장점검(Field Check) 모듈 구현",
+      "author": "junyoungjang976",
+      "date": "2026-02-14T14:56:16Z",
+      "url": "https://github.com/junyoungjang976/busungtk-hub/commit/3b49fb44893545548a4b305a30afb216149ea387",
+      "repo": "busungtk-hub"
+    },
+    {
+      "sha": "a75e2d0",
+      "message": "feat: Phase 0 Foundation + Phase 1 일일보고 CRUD 구현",
+      "author": "junyoungjang976",
+      "date": "2026-02-14T14:32:18Z",
+      "url": "https://github.com/junyoungjang976/busungtk-hub/commit/a75e2d08f856adf910fcb56d085461ff3cd30b1c",
+      "repo": "busungtk-hub"
+    },
+    {
+      "sha": "59a5aaf",
+      "message": "feat: 통합 운영 플랫폼 UI + DB 아키텍처 구성",
+      "author": "jangjoonyoung",
+      "date": "2026-02-14T05:36:50Z",
+      "url": "https://github.com/junyoungjang976/busungtk-hub/commit/59a5aaf5143818f9e9d430d5c2abf1a74f899d43",
+      "repo": "busungtk-hub"
+    },
+    {
+      "sha": "a433db8",
+      "message": "feat: Meta Ads 커넥터 실제 Graph API 연동",
+      "author": "jangjoonyoung",
+      "date": "2026-02-14T05:29:17Z",
+      "url": "https://github.com/junyoungjang976/busungtk-marketing/commit/a433db80031ce21fc05da55b623579b2fab65fee",
+      "repo": "busungtk-marketing"
+    },
+    {
+      "sha": "2ae9ec7",
+      "message": "feat: 광고 플랫폼 API 연동 구조 구축 (Google/Meta/Naver/Kakao)",
+      "author": "jangjoonyoung",
+      "date": "2026-02-14T04:25:05Z",
+      "url": "https://github.com/junyoungjang976/busungtk-marketing/commit/2ae9ec7a48e2b2a85e59eb0efeaafbd85b94e356",
+      "repo": "busungtk-marketing"
+    },
+    {
       "sha": "e61016b",
       "message": "chore: .gitignore 표준화",
       "author": "jangjoonyoung",
@@ -209,20 +281,20 @@
       "repo": "busungtk-portal"
     },
     {
-      "sha": "cfe31fc",
-      "message": "chore: .gitignore 표준화",
-      "author": "jangjoonyoung",
-      "date": "2026-02-14T02:27:43Z",
-      "url": "https://github.com/junyoungjang976/busungtk-order-tracker/commit/cfe31fc87edc73e21ed7382fcac1c26b732d24aa",
-      "repo": "busungtk-order-tracker"
-    },
-    {
       "sha": "5e3fb07",
       "message": "chore: .gitignore 표준화",
       "author": "jangjoonyoung",
       "date": "2026-02-14T02:27:43Z",
       "url": "https://github.com/junyoungjang976/busungtk-marketing/commit/5e3fb0772c8bb0335341d780e15145d79729d781",
       "repo": "busungtk-marketing"
+    },
+    {
+      "sha": "cfe31fc",
+      "message": "chore: .gitignore 표준화",
+      "author": "jangjoonyoung",
+      "date": "2026-02-14T02:27:43Z",
+      "url": "https://github.com/junyoungjang976/busungtk-order-tracker/commit/cfe31fc87edc73e21ed7382fcac1c26b732d24aa",
+      "repo": "busungtk-order-tracker"
     },
     {
       "sha": "38110ed",
@@ -241,6 +313,14 @@
       "repo": "busungtk-kitchen-simulator"
     },
     {
+      "sha": "07b3564",
+      "message": "chore: .gitignore 표준화",
+      "author": "jangjoonyoung",
+      "date": "2026-02-14T02:27:42Z",
+      "url": "https://github.com/junyoungjang976/busungtk-hub/commit/07b356421a225590b2b961c7f57f5b1f37f94ec5",
+      "repo": "busungtk-hub"
+    },
+    {
       "sha": "877bca5",
       "message": "chore: .gitignore 표준화",
       "author": "jangjoonyoung",
@@ -255,14 +335,6 @@
       "date": "2026-02-14T02:27:42Z",
       "url": "https://github.com/junyoungjang976/busungtk-hvac-mentor/commit/97a170fb8e91bf461fb1e0596fb86100b8e0263e",
       "repo": "busungtk-hvac-mentor"
-    },
-    {
-      "sha": "07b3564",
-      "message": "chore: .gitignore 표준화",
-      "author": "jangjoonyoung",
-      "date": "2026-02-14T02:27:42Z",
-      "url": "https://github.com/junyoungjang976/busungtk-hub/commit/07b356421a225590b2b961c7f57f5b1f37f94ec5",
-      "repo": "busungtk-hub"
     },
     {
       "sha": "e670bc4",
@@ -1703,78 +1775,6 @@
       "date": "2026-02-06T15:52:52Z",
       "url": "https://github.com/junyoungjang976/busungtk-ai-trends/commit/8b8aa504a25e8b53b532be7f88c7d5fc07f821d1",
       "repo": "busungtk-ai-trends"
-    },
-    {
-      "sha": "8e9a1b1",
-      "message": "feat: anon RLS 정책 추가 (002 마이그레이션)",
-      "author": "junyoungjang976",
-      "date": "2026-02-06T15:46:46Z",
-      "url": "https://github.com/junyoungjang976/busungtk-ai-trends/commit/8e9a1b14379c26635fed05234f257d8e5075f5eb",
-      "repo": "busungtk-ai-trends"
-    },
-    {
-      "sha": "96b1ec3",
-      "message": "feat: 사이드바 탭 네비게이션 구현 + Threads 수집기 구현",
-      "author": "junyoungjang976",
-      "date": "2026-02-06T15:23:50Z",
-      "url": "https://github.com/junyoungjang976/busungtk-ai-trends/commit/96b1ec3c73bf2e04098f8171701185ec2493cdfe",
-      "repo": "busungtk-ai-trends"
-    },
-    {
-      "sha": "5f6dcdc",
-      "message": "fix: createServiceClient cookies 설정 수정",
-      "author": "junyoungjang976",
-      "date": "2026-02-06T15:14:05Z",
-      "url": "https://github.com/junyoungjang976/busungtk-ai-trends/commit/5f6dcdc7a79282ce869640431435d50aa940f325",
-      "repo": "busungtk-ai-trends"
-    },
-    {
-      "sha": "2400726",
-      "message": "feat: 전체 한국어 로컬라이제이션",
-      "author": "junyoungjang976",
-      "date": "2026-02-06T15:12:41Z",
-      "url": "https://github.com/junyoungjang976/busungtk-ai-trends/commit/24007267a0f53cd50945ccdbc58c66fc4026917d",
-      "repo": "busungtk-ai-trends"
-    },
-    {
-      "sha": "7f0aa59",
-      "message": "fix: rename next.config.ts to next.config.mjs for Next.js 14 compatibility",
-      "author": "junyoungjang976",
-      "date": "2026-02-06T14:51:41Z",
-      "url": "https://github.com/junyoungjang976/busungtk-ai-trends/commit/7f0aa5976e3bf8be9b1ada69b7bbb9070df3d1ff",
-      "repo": "busungtk-ai-trends"
-    },
-    {
-      "sha": "c477e1a",
-      "message": "feat: initial AI Trend Intelligence implementation",
-      "author": "junyoungjang976",
-      "date": "2026-02-06T14:50:12Z",
-      "url": "https://github.com/junyoungjang976/busungtk-ai-trends/commit/c477e1a419fab0b47b73ac9e791133647ccc0ed0",
-      "repo": "busungtk-ai-trends"
-    },
-    {
-      "sha": "17254db",
-      "message": "fix: TypeScript strict mode 타입 에러 수정",
-      "author": "junyoungjang976",
-      "date": "2026-02-06T14:38:17Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/17254db37e7094e880471d88bc64995cd3281392",
-      "repo": "busungtk-asms"
-    },
-    {
-      "sha": "4aa8803",
-      "message": "feat: 테이블 컬럼 설정(표시/숨김) 및 열 폭 드래그 조정 기능",
-      "author": "junyoungjang976",
-      "date": "2026-02-06T14:33:44Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/4aa88030ded2d8b2724139c012f85f3f5e9e2252",
-      "repo": "busungtk-asms"
-    },
-    {
-      "sha": "8d30573",
-      "message": "fix: 견적서/접수 연결 표시 버그 수정 (3단계 fallback)",
-      "author": "junyoungjang976",
-      "date": "2026-02-06T14:33:32Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/8d30573242afd34d2df55457038b9d6ee2496de0",
-      "repo": "busungtk-asms"
     }
   ],
   "pull_requests": [
