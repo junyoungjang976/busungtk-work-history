@@ -10,8 +10,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   update-history:
@@ -30,8 +28,6 @@ jobs:
 
       - name: Fetch GitHub Activity
         env:
-          # PAT_TOKEN: Private 레포 접근용 Personal Access Token
-          # 설정 방법: Settings > Secrets > Actions > New repository secret
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
         run: python scripts/fetch_activity.py
 
@@ -42,27 +38,3 @@ jobs:
           git add -A
           git diff --staged --quiet || git commit -m "📊 Update work history $(date +'%Y-%m-%d')"
           git push
-
-  deploy:
-    needs: update-history
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref }}
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
