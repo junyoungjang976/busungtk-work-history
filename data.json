@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-02-19T15:09:57.754176Z",
+  "updated_at": "2026-02-20T00:58:19.838500Z",
   "repos": [
     "busungtk-marketing",
     "claude-dotfiles",
@@ -27,14 +27,21 @@
     "church-shorts-bg"
   ],
   "summary": {
-    "total_commits": 531,
+    "total_commits": 534,
     "total_prs": 0,
     "total_issues": 0,
-    "active_days": 24
+    "active_days": 25
   },
   "daily": {
+    "2026-02-20": {
+      "commits": 2,
+      "prs_opened": 0,
+      "prs_merged": 0,
+      "issues_opened": 0,
+      "issues_closed": 0
+    },
     "2026-02-19": {
-      "commits": 47,
+      "commits": 48,
       "prs_opened": 0,
       "prs_merged": 0,
       "issues_opened": 0,
@@ -203,6 +210,30 @@
     }
   },
   "commits": [
+    {
+      "sha": "8bacd4c",
+      "message": "fix: AI 카피 글자 수 초과 잘림 방지 — 프롬프트 강화 + 단어 단위 트림",
+      "author": "junyoungjang976",
+      "date": "2026-02-20T00:55:16Z",
+      "url": "https://github.com/junyoungjang976/busungtk-marketing/commit/8bacd4c9d7f8945ec19918c636ce8999cea167a2",
+      "repo": "busungtk-marketing"
+    },
+    {
+      "sha": "4fac7e1",
+      "message": "docs: CLAUDE.md 업데이트 — OMC v4.2.12 마커 + 현재 기능 반영",
+      "author": "junyoungjang976",
+      "date": "2026-02-20T00:51:31Z",
+      "url": "https://github.com/junyoungjang976/busungtk-marketing/commit/4fac7e1bc23a27c3f42393c58a55889f5deb6f8d",
+      "repo": "busungtk-marketing"
+    },
+    {
+      "sha": "1641ab2",
+      "message": "feat: 결과 분석 페이지 재설계 + AI 카피 확장소재/점수/스킬 선택 추가",
+      "author": "junyoungjang976",
+      "date": "2026-02-19T15:59:01Z",
+      "url": "https://github.com/junyoungjang976/busungtk-marketing/commit/1641ab2447b9d903dbe29d17e83c986ed34c0041",
+      "repo": "busungtk-marketing"
+    },
     {
       "sha": "8b56155",
       "message": "fix: 대시보드 API display_name 컬럼 제거 — total-system DB 호환",
@@ -1778,30 +1809,6 @@
       "date": "2026-02-14T02:27:43Z",
       "url": "https://github.com/junyoungjang976/busungtk-order-tracker/commit/cfe31fc87edc73e21ed7382fcac1c26b732d24aa",
       "repo": "busungtk-order-tracker"
-    },
-    {
-      "sha": "877bca5",
-      "message": "chore: .gitignore 표준화",
-      "author": "jangjoonyoung",
-      "date": "2026-02-14T02:27:42Z",
-      "url": "https://github.com/junyoungjang976/busungtk-kitchen-planner/commit/877bca54e1d911edd430e81d071da58c05e5e093",
-      "repo": "busungtk-kitchen-planner"
-    },
-    {
-      "sha": "97a170f",
-      "message": "chore: .gitignore 표준화",
-      "author": "jangjoonyoung",
-      "date": "2026-02-14T02:27:42Z",
-      "url": "https://github.com/junyoungjang976/busungtk-hvac-mentor/commit/97a170fb8e91bf461fb1e0596fb86100b8e0263e",
-      "repo": "busungtk-hvac-mentor"
-    },
-    {
-      "sha": "07b3564",
-      "message": "chore: .gitignore 표준화",
-      "author": "jangjoonyoung",
-      "date": "2026-02-14T02:27:42Z",
-      "url": "https://github.com/junyoungjang976/busungtk-hub/commit/07b356421a225590b2b961c7f57f5b1f37f94ec5",
-      "repo": "busungtk-hub"
     }
   ],
   "pull_requests": [],
