@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부성티케이 실전 참조 가이드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .section-card { transition: all 0.2s ease; }
+        .section-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .checklist-item input:checked + label { text-decoration: line-through; color: #9ca3af; }
+        .toc-link { transition: all 0.15s; }
+        .toc-link:hover { padding-left: 12px; }
+        .collapse-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .collapse-content.open { max-height: 5000px; }
+        .stat-card { background: linear-gradient(135deg, var(--from), var(--to)); }
+        .search-highlight { background-color: #fef08a; padding: 1px 2px; border-radius: 2px; }
+        .top-bar { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+        .badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 9999px; font-size: 0.75rem; font-weight: 500; }
+        @media print { .no-print { display: none !important; } .collapse-content { max-height: none !important; } }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <!-- Top Navigation -->
+    <nav class="top-bar sticky top-0 z-50 bg-white/90 border-b border-gray-200 no-print">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="text-gray-500 hover:text-gray-700 text-sm flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    대시보드
+                </a>
+                <span class="text-gray-300">|</span>
+                <span class="font-semibold text-gray-900">실전 참조 가이드</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <input type="text" id="search-input" placeholder="검색..."
+                       class="w-48 md:w-64 px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button onclick="expandAll()" class="px-3 py-1.5 text-xs bg-gray-100 hover:bg-gray-200 rounded-lg">모두 펼치기</button>
+                <button onclick="collapseAll()" class="px-3 py-1.5 text-xs bg-gray-100 hover:bg-gray-200 rounded-lg">모두 접기</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto px-4 py-8">
+
+        <!-- Header -->
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">부성티케이 실전 참조 가이드</h1>
+            <p class="text-gray-600 mt-2">534개 커밋 · 22개 프로젝트 분석 기반 (2026-01-24 ~ 2026-02-20)</p>
+            <p class="text-sm text-gray-400 mt-1">비개발자가 새 작업/프로젝트 시작 시 반드시 참고할 패턴과 체크리스트</p>
+        </header>
+
+        <!-- Stats Overview -->
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
+            <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-4 text-white">
+                <div class="text-3xl font-bold">534</div>
+                <div class="text-blue-100 text-sm">총 커밋</div>
+            </div>
+            <div class="bg-gradient-to-br from-red-500 to-red-600 rounded-xl p-4 text-white">
+                <div class="text-3xl font-bold">~35%</div>
+                <div class="text-red-100 text-sm">fix 비율</div>
+            </div>
+            <div class="bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl p-4 text-white">
+                <div class="text-3xl font-bold">3</div>
+                <div class="text-amber-100 text-sm">Revert</div>
+            </div>
+            <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl p-4 text-white">
+                <div class="text-3xl font-bold">82</div>
+                <div class="text-purple-100 text-sm">일괄정비 (1일)</div>
+            </div>
+            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl p-4 text-white">
+                <div class="text-3xl font-bold">7</div>
+                <div class="text-green-100 text-sm">모바일 수정 연쇄</div>
+            </div>
+        </div>
+
+        <!-- Quick Reference Card -->
+        <div class="bg-gradient-to-r from-indigo-600 to-blue-700 rounded-xl shadow-lg p-6 mb-8 text-white">
+            <h2 class="text-xl font-semibold mb-4">"이거 하기 전에 이것부터" 빠른 참조</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                <a href="#section-1" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 cursor-pointer transition block">
+                    <div class="font-medium">새 프로젝트 생성</div>
+                    <div class="text-sm text-blue-200 mt-1">초기 설정 체크리스트 9항목</div>
+                </a>
+                <a href="#section-2" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 cursor-pointer transition block">
+                    <div class="font-medium">UI 만들기/수정</div>
+                    <div class="text-sm text-blue-200 mt-1">모바일 뷰 + 공유 컴포넌트</div>
+                </a>
+                <a href="#section-3" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 cursor-pointer transition block">
+                    <div class="font-medium">DB/SQL 작업</div>
+                    <div class="text-sm text-blue-200 mt-1">어떤 DB인지 + 영향 확인</div>
+                </a>
+                <a href="#section-4" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 cursor-pointer transition block">
+                    <div class="font-medium">API 연동</div>
+                    <div class="text-sm text-blue-200 mt-1">문서 → Postman → 코드</div>
+                </a>
+                <a href="#section-5" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 cursor-pointer transition block">
+                    <div class="font-medium">빌드/배포</div>
+                    <div class="text-sm text-blue-200 mt-1">빌드 확인 + 환경변수 + 패키지</div>
+                </a>
+                <a href="#section-6" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 cursor-pointer transition block">
+                    <div class="font-medium">데이터 동기화</div>
+                    <div class="text-sm text-blue-200 mt-1">캐시 무효화 + 연쇄 동작</div>
+                </a>
+                <a href="#section-7" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 cursor-pointer transition block">
+                    <div class="font-medium">반복 실수 TOP 10</div>
+                    <div class="text-sm text-blue-200 mt-1">가장 많이 낭비된 패턴</div>
+                </a>
+                <a href="#section-8" class="bg-white/10 hover:bg-white/20 rounded-lg p-3 cursor-pointer transition block">
+                    <div class="font-medium">Claude 요청 팁</div>
+                    <div class="text-sm text-blue-200 mt-1">좋은/나쁜 요청 예시</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 1: 새 프로젝트 생성 -->
+        <!-- ============================================ -->
+        <div id="section-1" class="section-card bg-white rounded-xl shadow mb-4 scroll-mt-20">
+            <button onclick="toggleSection('s1')" class="w-full flex items-center justify-between p-6 text-left">
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-100 text-blue-600 font-bold text-lg">1</span>
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900">새 프로젝트 생성 시 (초기 설정)</h2>
+                        <p class="text-sm text-gray-500 mt-0.5">82커밋 일괄정비가 재발하지 않도록</p>
+                    </div>
+                </div>
+                <svg id="s1-arrow" class="w-5 h-5 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="s1" class="collapse-content open">
+                <div class="px-6 pb-6">
+                    <!-- Why -->
+                    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
+                        <div class="font-medium text-amber-800 mb-1">왜 중요한가</div>
+                        <p class="text-sm text-amber-700">2026-02-17 하루에 82개 커밋으로 22개 프로젝트를 일괄 정비했다. 처음부터 하면 프로젝트당 5분, 나중에 하면 프로젝트당 30분+ 소요.</p>
+                    </div>
+
+                    <!-- Checklist -->
+                    <h3 class="font-semibold text-gray-700 mb-3">초기 설정 체크리스트</h3>
+                    <div class="space-y-2 mb-6" id="checklist-1">
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" id="c1-1" class="mt-1 w-4 h-4 rounded"><label for="c1-1" class="text-sm flex-1"><strong>.gitignore 표준 파일 적용</strong><br><span class="text-gray-500">node_modules/, dist/, .env*, .supabase/, Claude 임시 파일</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" id="c1-2" class="mt-1 w-4 h-4 rounded"><label for="c1-2" class="text-sm flex-1"><strong>공유 패키지 연결</strong><br><span class="text-gray-500">@busungtk/ui (17개 컴포넌트) + @busungtk/supabase-types</span><br><span class="text-red-500 font-medium">Vercel에서는 file: 의존성 안 됨! packages/ 폴더에 복사 필요</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" id="c1-3" class="mt-1 w-4 h-4 rounded"><label for="c1-3" class="text-sm flex-1"><strong>GitHub Actions CI 워크플로우 추가</strong><br><span class="text-gray-500">.github/workflows/ci.yml — push/PR 시 자동 빌드 검증</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" id="c1-4" class="mt-1 w-4 h-4 rounded"><label for="c1-4" class="text-sm flex-1"><strong>Vercel Analytics 추가</strong><br><span class="text-gray-500">@vercel/analytics 설치 + &lt;Analytics /&gt; 추가</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" id="c1-5" class="mt-1 w-4 h-4 rounded"><label for="c1-5" class="text-sm flex-1"><strong>테스트 인프라 설정 (Vitest)</strong><br><span class="text-gray-500">처음부터 안 하면 나중에 추가하기 어려움</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" id="c1-6" class="mt-1 w-4 h-4 rounded"><label for="c1-6" class="text-sm flex-1"><strong>모바일 반응형 기본 설정</strong><br><span class="text-gray-500">처음부터 모바일 화면 기준으로 만들 것</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" id="c1-7" class="mt-1 w-4 h-4 rounded"><label for="c1-7" class="text-sm flex-1"><strong>코드 스플리팅 기본 설정</strong><br><span class="text-gray-500">React.lazy + Suspense — 안 하면 2.5MB → 한 후 443KB (82% 감소)</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" id="c1-8" class="mt-1 w-4 h-4 rounded"><label for="c1-8" class="text-sm flex-1"><strong>환경변수 관리</strong><br><span class="text-gray-500">.env.local 생성 + Vercel Production 환경변수 등록</span><br><span class="text-red-500 font-medium">vercel env pull은 Production 키를 안 내려줌!</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" id="c1-9" class="mt-1 w-4 h-4 rounded"><label for="c1-9" class="text-sm flex-1"><strong>CLAUDE.md 작성</strong><br><span class="text-gray-500">프로젝트 고유 정보 (스택, 구조, 기능, 명령어)</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Consequence Table -->
+                    <h3 class="font-semibold text-gray-700 mb-3">빠뜨린 것들의 결과 (실제 사례)</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead><tr class="bg-gray-100"><th class="text-left p-3 rounded-tl-lg">빠뜨린 것</th><th class="text-left p-3 rounded-tr-lg">나중에 발생한 문제</th></tr></thead>
+                            <tbody>
+                                <tr class="border-t"><td class="p-3">.gitignore</td><td class="p-3">.env 파일이 GitHub에 올라감</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3">CI 워크플로우</td><td class="p-3">빌드 에러를 Vercel 배포에서야 발견</td></tr>
+                                <tr class="border-t"><td class="p-3">모바일 설정</td><td class="p-3">order-tracker에서 모바일 수정만 7번</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3">코드 스플리팅</td><td class="p-3">sales-crm 초기 로드 2.5MB</td></tr>
+                                <tr class="border-t"><td class="p-3">Vercel 환경변수</td><td class="p-3">sales-pipeline 배포 재시도 5회 이상</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 2: UI 수정 -->
+        <!-- ============================================ -->
+        <div id="section-2" class="section-card bg-white rounded-xl shadow mb-4 scroll-mt-20">
+            <button onclick="toggleSection('s2')" class="w-full flex items-center justify-between p-6 text-left">
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-pink-100 text-pink-600 font-bold text-lg">2</span>
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900">UI 수정 시 알아야 할 것</h2>
+                        <p class="text-sm text-gray-500 mt-0.5">"모바일 먼저, PC는 덤"</p>
+                    </div>
+                </div>
+                <svg id="s2-arrow" class="w-5 h-5 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="s2" class="collapse-content">
+                <div class="px-6 pb-6">
+                    <!-- Case Study -->
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+                        <div class="font-medium text-red-800 mb-1">실제 사례: order-tracker 모바일 수정 7연쇄</div>
+                        <div class="text-sm text-red-700 space-y-1">
+                            <p>1. 헤더 로고 겹침 → 2. 상태 탭 스크롤 → 3. 가로 스크롤 → 4. 견적 요청서 → 5. 발주서 PDF → 6. 품목 테이블 → 7. 결국 "전체 페이지 모바일 최적화"</p>
+                            <p class="font-semibold mt-2">처음부터 모바일 기준으로 만들었으면 커밋 1개로 끝남.</p>
+                        </div>
+                    </div>
+
+                    <!-- Checklist -->
+                    <h3 class="font-semibold text-gray-700 mb-3">UI 수정 체크리스트</h3>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>모바일에서 먼저 확인</strong><br><span class="text-gray-500">크롬 F12 → Ctrl+Shift+M / 실제 핸드폰 1회 확인 / 테이블 가로 스크롤 확인</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>@busungtk/ui 공유 컴포넌트 확인</strong><br><span class="text-gray-500">Button, Input, Select, Dialog, Tabs, Card, Badge, Table, Pagination, SearchableSelect, Toaster, RadioGroup 등 17개. 새로 만들기 전에 기존 것 확인!</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>필터 UI 설계</strong><br><span class="text-gray-500">URL 파라미터로 상태 유지할지 결정 / 필터 조합 케이스 미리 정의</span><br><span class="text-red-500 font-medium">ASMS에서 필터 수정만 3번 반복 — 기준을 사전에 안 정했기 때문</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>상태 표시 (뱃지/칩)</strong><br><span class="text-gray-500">상태값 목록을 DB enum과 맞출 것 / 새 상태 추가 시 UI 색상도 함께</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>PDF/Excel 출력</strong><br><span class="text-gray-500">A4 기준 레이아웃 / 빈 행 채우기 여부 / 모바일 다운로드 확인</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Bug patterns -->
+                    <h3 class="font-semibold text-gray-700 mb-3">자주 발생하는 UI 버그 패턴</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead><tr class="bg-gray-100"><th class="text-left p-3">버그</th><th class="text-left p-3">원인</th><th class="text-left p-3">예방법</th></tr></thead>
+                            <tbody>
+                                <tr class="border-t"><td class="p-3">모바일에서 테이블 잘림</td><td class="p-3">overflow-x: auto 미적용</td><td class="p-3">테이블 래퍼에 항상 적용</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3">모달 바깥 클릭 시 닫힘</td><td class="p-3">기본 동작</td><td class="p-3">폼 모달은 onInteractOutside 방지</td></tr>
+                                <tr class="border-t"><td class="p-3">필터가 초기화됨</td><td class="p-3">페이지 이동 시 상태 소실</td><td class="p-3">URL 파라미터로 상태 유지</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3">수정 후 목록 안 바뀜</td><td class="p-3">캐시 무효화 누락</td><td class="p-3">mutation 후 쿼리 invalidate</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 3: DB 작업 -->
+        <!-- ============================================ -->
+        <div id="section-3" class="section-card bg-white rounded-xl shadow mb-4 scroll-mt-20">
+            <button onclick="toggleSection('s3')" class="w-full flex items-center justify-between p-6 text-left">
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-green-100 text-green-600 font-bold text-lg">3</span>
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900">Supabase (DB) 작업 시 알아야 할 것</h2>
+                        <p class="text-sm text-gray-500 mt-0.5">busungtk-main = 읽기 전용!</p>
+                    </div>
+                </div>
+                <svg id="s3-arrow" class="w-5 h-5 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="s3" class="collapse-content">
+                <div class="px-6 pb-6">
+                    <!-- Critical Warning -->
+                    <div class="bg-red-100 border-2 border-red-300 rounded-lg p-4 mb-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-2xl">🚨</span>
+                            <span class="font-bold text-red-800 text-lg">가장 중요한 규칙</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                            <div class="bg-red-200/50 rounded-lg p-3">
+                                <div class="font-bold text-red-800">busungtk-main (fgnkrhgb)</div>
+                                <div class="text-red-700">읽기 전용! 수정/삭제/마이그레이션 절대 금지</div>
+                            </div>
+                            <div class="bg-green-200/50 rounded-lg p-3">
+                                <div class="font-bold text-green-800">total-system (xvtixgnc)</div>
+                                <div class="text-green-700">hub 전용, 여기서만 스키마/데이터 작업</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checklist -->
+                    <h3 class="font-semibold text-gray-700 mb-3">DB 작업 체크리스트</h3>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>어떤 DB에서 작업하는지 확인</strong></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>테이블 변경 시 다른 프로젝트 영향 확인</strong><br><span class="text-gray-500">공유 인스턴스 — quotes 테이블은 ASMS, hub, order-tracker 모두 사용</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>타임존 확인</strong> (KST vs UTC)<br><span class="text-red-500 font-medium">거래명세표 통계에서 타임존 버그 발생 사례</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>데이터 필터 기준 사전 정의</strong><br><span class="text-red-500 font-medium">ASMS에서 날짜 기준 3번 수정 — 미리 안 정했기 때문</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>상태 변경 시 연쇄 동작 확인</strong><br><span class="text-gray-500">견적서 → 세금계산서/거래명세표/로그 / "생성"과 "수정" 모두 동작하는지</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>Supabase 1000개 제한 확인</strong><br><span class="text-red-500 font-medium">order-tracker에서 업체 목록 1000개 제한 버그 발생</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>캐시 무효화</strong><br><span class="text-gray-500">mutation 후 관련 쿼리 전부 invalidate — 통계도 포함</span></label>
+                        </div>
+                    </div>
+
+                    <!-- SQL Tips -->
+                    <h3 class="font-semibold text-gray-700 mb-3">SQL 실행 잘하는 방법</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <div class="font-medium text-blue-800 mb-1">1. SELECT 먼저</div>
+                            <p class="text-sm text-blue-700">변경 전 현재 상태 확인. "몇 개 행에 영향 주는지" 파악</p>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <div class="font-medium text-blue-800 mb-1">2. WHERE 절 필수</div>
+                            <p class="text-sm text-blue-700">UPDATE/DELETE에 WHERE 없으면 전체 변경! 같은 WHERE로 SELECT 먼저</p>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <div class="font-medium text-blue-800 mb-1">3. 트랜잭션 사용</div>
+                            <p class="text-sm text-blue-700">여러 테이블 동시 수정 시 하나 실패하면 전부 되돌리기</p>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <div class="font-medium text-blue-800 mb-1">4. 마이그레이션 기록</div>
+                            <p class="text-sm text-blue-700">SQL 변경을 파일로 저장. 언제 무엇을 바꿨는지 추적</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 4: API 연동 -->
+        <!-- ============================================ -->
+        <div id="section-4" class="section-card bg-white rounded-xl shadow mb-4 scroll-mt-20">
+            <button onclick="toggleSection('s4')" class="w-full flex items-center justify-between p-6 text-left">
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-indigo-100 text-indigo-600 font-bold text-lg">4</span>
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900">외부 API 연동 시 알아야 할 것</h2>
+                        <p class="text-sm text-gray-500 mt-0.5">문서 → Postman → 코드 순서</p>
+                    </div>
+                </div>
+                <svg id="s4-arrow" class="w-5 h-5 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="s4" class="collapse-content">
+                <div class="px-6 pb-6">
+                    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
+                        <div class="font-medium text-amber-800 mb-1">왜 중요한가</div>
+                        <p class="text-sm text-amber-700">marketing 프로젝트에서 네이버 검색광고 API 연동 시 debug 3개 + fix 2개 = 5커밋 낭비. 문서를 먼저 읽었으면 1커밋으로 끝.</p>
+                    </div>
+
+                    <h3 class="font-semibold text-gray-700 mb-3">API 연동 체크리스트</h3>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>1. 공식 문서 먼저 읽기 (가장 중요!)</strong><br><span class="text-gray-500">인증 방식, 필수 파라미터, 응답 형식, Rate limit 확인</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>2. Postman/curl로 단독 테스트</strong><br><span class="text-gray-500">코드 작성 전에 API 동작 확인 → debug 커밋 0개 가능</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>3. 환경변수 정리</strong><br><span class="text-gray-500">변수 이름 매핑 정확히 + Vercel에도 등록</span><br><span class="text-red-500 font-medium">채널톡 환경변수 이름 매핑 수정 사례, env var trim 필요 사례</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>4. 에러 처리 설계</strong><br><span class="text-gray-500">API 실패 시 사용자에게 보여줄 것, 재시도 로직, 로그 남기기</span></label>
+                        </div>
+                    </div>
+
+                    <!-- API Table -->
+                    <h3 class="font-semibold text-gray-700 mb-3">서비스별 연동 현황 & 주의사항</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead><tr class="bg-gray-100"><th class="text-left p-3">서비스</th><th class="text-left p-3">사용 프로젝트</th><th class="text-left p-3">주의사항</th></tr></thead>
+                            <tbody>
+                                <tr class="border-t"><td class="p-3 font-medium">Supabase</td><td class="p-3">거의 전체</td><td class="p-3">1000행 제한, RLS, 공유 인스턴스</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3 font-medium">채널톡</td><td class="p-3">ASMS, CRM, Pipeline</td><td class="p-3">x-access-key/secret 헤더, 동기화 날짜 필터</td></tr>
+                                <tr class="border-t"><td class="p-3 font-medium">솔라피 (알림톡)</td><td class="p-3">order-tracker</td><td class="p-3">템플릿 사전 승인, URL https:// 중복 주의</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3 font-medium">네이버 검색광고</td><td class="p-3">marketing</td><td class="p-3">API 키 trim 필수, 캠페인ID에 하이픈 포함</td></tr>
+                                <tr class="border-t"><td class="p-3 font-medium">Meta Ads</td><td class="p-3">marketing</td><td class="p-3">OAuth 토큰 갱신, 필드 명시 필요</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3 font-medium">Gmail SMTP</td><td class="p-3">order-tracker</td><td class="p-3">Resend에서 전환, nodemailer 사용</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 5: 빌드/배포 -->
+        <!-- ============================================ -->
+        <div id="section-5" class="section-card bg-white rounded-xl shadow mb-4 scroll-mt-20">
+            <button onclick="toggleSection('s5')" class="w-full flex items-center justify-between p-6 text-left">
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-orange-100 text-orange-600 font-bold text-lg">5</span>
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900">빌드/배포 시 알아야 할 것</h2>
+                        <p class="text-sm text-gray-500 mt-0.5">npm run build 확인이 기본</p>
+                    </div>
+                </div>
+                <svg id="s5-arrow" class="w-5 h-5 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="s5" class="collapse-content">
+                <div class="px-6 pb-6">
+                    <h3 class="font-semibold text-gray-700 mb-3">배포 전 체크리스트</h3>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>로컬 빌드 확인: npm run build</strong><br><span class="text-red-500 font-medium">tsc --noEmit 통과해도 tsc -b에서 실패할 수 있음!</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>TypeScript 타입 에러 확인</strong><br><span class="text-gray-500">미사용 import/변수 제거, null 처리 — 22개 중 가장 많이 반복된 fix 유형</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>환경변수 Vercel 등록</strong><br><span class="text-gray-500">NEXT_PUBLIC_ 접두사 필요 여부 확인</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>공유 패키지 의존성 확인</strong><br><span class="text-red-500 font-medium">file: 의존성 = Vercel 빌드 실패! hub에서 Revert한 사례</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>Vercel 배포 규칙</strong><br><span class="text-gray-500">Preview 배포 사용 안 함 (비용 절감) / Production만: vercel --prod</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Error Table -->
+                    <h3 class="font-semibold text-gray-700 mb-3">자주 발생하는 빌드 에러</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead><tr class="bg-gray-100"><th class="text-left p-3">에러</th><th class="text-left p-3">원인</th><th class="text-left p-3">해결</th></tr></thead>
+                            <tbody>
+                                <tr class="border-t"><td class="p-3">TS2448: 중복 선언</td><td class="p-3">같은 변수 두 번 선언</td><td class="p-3">하나 제거</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3">TS2322: 타입 불일치</td><td class="p-3">DB 타입과 코드 타입 다름</td><td class="p-3">supabase-types 최신 반영</td></tr>
+                                <tr class="border-t"><td class="p-3">미사용 import/변수</td><td class="p-3">리팩토링 후 정리 안 함</td><td class="p-3">eslint 또는 수동 제거</td></tr>
+                                <tr class="border-t bg-gray-50"><td class="p-3">Module not found</td><td class="p-3">file: 의존성 Vercel 실패</td><td class="p-3">packages/로 복사</td></tr>
+                                <tr class="border-t"><td class="p-3">Supabase 초기화 에러</td><td class="p-3">빌드 타임에 환경변수 없음</td><td class="p-3">lazy 초기화 패턴 적용</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 6: 데이터 동기화 -->
+        <!-- ============================================ -->
+        <div id="section-6" class="section-card bg-white rounded-xl shadow mb-4 scroll-mt-20">
+            <button onclick="toggleSection('s6')" class="w-full flex items-center justify-between p-6 text-left">
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-100 text-purple-600 font-bold text-lg">6</span>
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900">데이터 동기화 / 상태 연동</h2>
+                        <p class="text-sm text-gray-500 mt-0.5">"A를 수정했는데 B에 반영 안 됨" 방지</p>
+                    </div>
+                </div>
+                <svg id="s6-arrow" class="w-5 h-5 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="s6" class="collapse-content">
+                <div class="px-6 pb-6">
+                    <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
+                        <div class="font-medium text-purple-800 mb-1">ASMS에서 가장 많이 반복된 버그</div>
+                        <p class="text-sm text-purple-700">"생성"에서는 되는데 "수정"에서 안 되는 패턴. 견적서 생성 시 A/S 접수 연결 OK, 수정 시 새로 추가한 A/S 접수 반영 안 됨.</p>
+                    </div>
+
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>"생성"과 "수정" 모두 동기화되는지 확인</strong></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>상태 변경 시 연쇄 동작 목록 작성</strong><br><span class="text-gray-500">예: 견적서 "입금완료" → 거래명세표 자동 생성 / 상태 되돌리기 → 연동 데이터 삭제 확인</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>캐시 무효화 체크</strong><br><span class="text-gray-500">mutation 후 관련 쿼리 전부 invalidate — 통계 쿼리도 포함!</span></label>
+                        </div>
+                        <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <input type="checkbox" class="mt-1 w-4 h-4 rounded"><label class="text-sm flex-1"><strong>외부 서비스 동기화 시 날짜 필터 + 중복 방지</strong></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 7: 반복 실수 TOP 10 -->
+        <!-- ============================================ -->
+        <div id="section-7" class="section-card bg-white rounded-xl shadow mb-4 scroll-mt-20">
+            <button onclick="toggleSection('s7')" class="w-full flex items-center justify-between p-6 text-left">
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-red-100 text-red-600 font-bold text-lg">7</span>
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900">반복 실수 TOP 10 & 예방법</h2>
+                        <p class="text-sm text-gray-500 mt-0.5">가장 많은 시간이 낭비된 패턴</p>
+                    </div>
+                </div>
+                <svg id="s7-arrow" class="w-5 h-5 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="s7" class="collapse-content">
+                <div class="px-6 pb-6">
+                    <div class="space-y-3">
+                        <!-- Top 10 items -->
+                        <div class="flex items-center gap-4 p-4 bg-red-50 rounded-lg border-l-4 border-red-500">
+                            <span class="text-2xl font-bold text-red-300">1</span>
+                            <div class="flex-1">
+                                <div class="font-medium text-gray-900">모바일 확인 안 함</div>
+                                <div class="text-sm text-gray-600">7+ 커밋 낭비</div>
+                            </div>
+                            <span class="badge bg-green-100 text-green-700">모바일 먼저 확인</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-red-50 rounded-lg border-l-4 border-red-400">
+                            <span class="text-2xl font-bold text-red-300">2</span>
+                            <div class="flex-1">
+                                <div class="font-medium text-gray-900">빌드 확인 없이 배포</div>
+                                <div class="text-sm text-gray-600">10+ 커밋 낭비</div>
+                            </div>
+                            <span class="badge bg-green-100 text-green-700">npm run build 후 커밋</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-orange-50 rounded-lg border-l-4 border-orange-400">
+                            <span class="text-2xl font-bold text-orange-300">3</span>
+                            <div class="flex-1">
+                                <div class="font-medium text-gray-900">환경변수 Vercel 미등록</div>
+                                <div class="text-sm text-gray-600">5+ 커밋 낭비</div>
+                            </div>
+                            <span class="badge bg-green-100 text-green-700">추가 시 즉시 등록</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-orange-50 rounded-lg border-l-4 border-orange-300">
+                            <span class="text-2xl font-bold text-orange-300">4</span>
+                            <div class="flex-1">
+                                <div class="font-medium text-gray-900">날짜/필터 기준 미정의</div>
+                                <div class="text-sm text-gray-600">6+ 커밋 낭비</div>
+                            </div>
+                            <span class="badge bg-green-100 text-green-700">요청 시 기준 명확히</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
+                            <span class="text-2xl font-bold text-yellow-300">5</span>
+                            <div class="flex-1">
+                                <div class="font-medium text-gray-900">생성은 되는데 수정 안 됨</div>
+                                <div class="text-sm text-gray-600">4+ 커밋 낭비</div>
+                            </div>
+                            <span class="badge bg-green-100 text-green-700">CRUD 모두 테스트</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-300">
+                            <span class="text-2xl font-bold text-yellow-300">6</span>
+                            <div class="flex-1">
+                                <div class="font-medium text-gray-900">캐시 무효화 누락</div>
+                                <div class="text-sm text-gray-600">3+ 커밋 낭비</div>
+                            </div>
+                            <span class="badge bg-green-100 text-green-700">invalidate 목록 작성</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg border-l-4 border-gray-300">
+                            <span class="text-2xl font-bold text-gray-300">7</span>
+                            <div class="flex-1">
+                                <div class="font-medium text-gray-900">API 문서 안 읽고 시작</div>
+                                <div class="text-sm text-gray-600">5+ 커밋 낭비</div>
+                            </div>
+                            <span class="badge bg-green-100 text-green-700">문서→Postman→코드</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg border-l-4 border-gray-300">
+                            <span class="text-2xl font-bold text-gray-300">8</span>
+                            <div class="flex-1">
+                                <div class="font-medium text-gray-900">file: 의존성 배포 실패</div>
+                                <div class="text-sm text-gray-600">2+ Revert</div>
+                            </div>
+                            <span class="badge bg-green-100 text-green-700">Vercel 빌드 테스트</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg border-l-4 border-gray-200">
+                            <span class="text-2xl font-bold text-gray-300">9</span>
+                            <div class="flex-1">
+                                <div class="font-medium text-gray-900">한 커밋에 기능 4개</div>
+                                <div class="text-sm text-gray-600">1건 + 4 fix</div>
+                            </div>
+                            <span class="badge bg-green-100 text-green-700">1커밋 = 1기능</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg border-l-4 border-gray-200">
+                            <span class="text-2xl font-bold text-gray-300">10</span>
+                            <div class="flex-1">
+                                <div class="font-medium text-gray-900">초기 설정 누락</div>
+                                <div class="text-sm text-gray-600">82커밋 일괄정비</div>
+                            </div>
+                            <span class="badge bg-green-100 text-green-700">프로젝트 템플릿 사용</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 8: Claude 요청 팁 -->
+        <!-- ============================================ -->
+        <div id="section-8" class="section-card bg-white rounded-xl shadow mb-4 scroll-mt-20">
+            <button onclick="toggleSection('s8')" class="w-full flex items-center justify-between p-6 text-left">
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-cyan-100 text-cyan-600 font-bold text-lg">8</span>
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900">Claude에게 요청하는 팁</h2>
+                        <p class="text-sm text-gray-500 mt-0.5">좋은 요청 vs 나쁜 요청</p>
+                    </div>
+                </div>
+                <svg id="s8-arrow" class="w-5 h-5 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="s8" class="collapse-content">
+                <div class="px-6 pb-6">
+                    <!-- New Feature -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-700 mb-3">새 기능 요청 시</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                <div class="font-medium text-green-800 mb-2">좋은 요청</div>
+                                <div class="text-sm text-green-700 bg-white rounded p-3 font-mono whitespace-pre-wrap">"ASMS에 '보류' 상태를 추가해줘.
+- 견적서 목록에서 보류 상태 필터 추가
+- 보류 상태일 때 세금계산서/거래명세표는 생성 안 함
+- 모바일에서도 상태 변경 가능해야 함
+- 2026년 2월 이후 데이터에만 적용"</div>
+                            </div>
+                            <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                                <div class="font-medium text-red-800 mb-2">나쁜 요청</div>
+                                <div class="text-sm text-red-700 bg-white rounded p-3 font-mono whitespace-pre-wrap">"견적서에 새 기능 추가해줘"
+→ 뭘 추가할지 모름
+
+"이것저것 다 고쳐줘"
+→ 범위 불명확</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bug Fix -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-700 mb-3">버그 수정 요청 시</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                <div class="font-medium text-green-800 mb-2">좋은 요청</div>
+                                <div class="text-sm text-green-700 bg-white rounded p-3 font-mono whitespace-pre-wrap">"견적서 수정 화면에서 A/S 접수를
+새로 추가하면 저장 후 안 보여.
+새로 만들기에서는 잘 되는데
+수정에서만 안 됨.
+크롬 콘솔에 에러는 없음."</div>
+                            </div>
+                            <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                                <div class="font-medium text-red-800 mb-2">나쁜 요청</div>
+                                <div class="text-sm text-red-700 bg-white rounded p-3 font-mono whitespace-pre-wrap">"견적서가 이상해"
+→ 뭐가 이상한지 모름</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DB Change -->
+                    <div>
+                        <h3 class="font-semibold text-gray-700 mb-3">DB 변경 요청 시</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                <div class="font-medium text-green-800 mb-2">좋은 요청</div>
+                                <div class="text-sm text-green-700 bg-white rounded p-3 font-mono whitespace-pre-wrap">"quotes 테이블에 payment_method
+컬럼 추가해줘.
+- 타입: text, 기본값: 'bank_transfer'
+- 기존 데이터는 기본값으로 채워줘
+- ASMS, hub에서 이 테이블 쓰는 것
+  확인해줘"</div>
+                            </div>
+                            <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                                <div class="font-medium text-red-800 mb-2">나쁜 요청</div>
+                                <div class="text-sm text-red-700 bg-white rounded p-3 font-mono whitespace-pre-wrap">"DB에 컬럼 하나 추가해줘"
+→ 어떤 테이블? 어떤 타입?</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- SECTION 9: 프로젝트 성숙도 -->
+        <!-- ============================================ -->
+        <div id="section-9" class="section-card bg-white rounded-xl shadow mb-4 scroll-mt-20">
+            <button onclick="toggleSection('s9')" class="w-full flex items-center justify-between p-6 text-left">
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center justify-center w-10 h-10 rounded-lg bg-teal-100 text-teal-600 font-bold text-lg">9</span>
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-900">프로젝트 성숙도 & 주의사항</h2>
+                        <p class="text-sm text-gray-500 mt-0.5">프로젝트별로 주로 발생하는 문제 유형</p>
+                    </div>
+                </div>
+                <svg id="s9-arrow" class="w-5 h-5 text-gray-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="s9" class="collapse-content">
+                <div class="px-6 pb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <!-- High maturity -->
+                        <div class="border-2 border-green-200 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="badge bg-green-100 text-green-700">높음</span>
+                                <span class="font-bold text-gray-900">ASMS</span>
+                            </div>
+                            <p class="text-sm text-gray-600">동기화 버그, 캐시 무효화, PDF 레이아웃</p>
+                        </div>
+                        <!-- Medium maturity -->
+                        <div class="border-2 border-yellow-200 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="badge bg-yellow-100 text-yellow-700">중간</span>
+                                <span class="font-bold text-gray-900">order-tracker</span>
+                            </div>
+                            <p class="text-sm text-gray-600">모바일 대응, 알림톡 연동, PDF 파싱</p>
+                        </div>
+                        <div class="border-2 border-yellow-200 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="badge bg-yellow-100 text-yellow-700">중간</span>
+                                <span class="font-bold text-gray-900">hub</span>
+                            </div>
+                            <p class="text-sm text-gray-600">Revert 발생, 공유 패키지 전환, 마이그레이션</p>
+                        </div>
+                        <div class="border-2 border-yellow-200 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="badge bg-yellow-100 text-yellow-700">중간</span>
+                                <span class="font-bold text-gray-900">equipment</span>
+                            </div>
+                            <p class="text-sm text-gray-600">첨부파일 업로드, 한글 파일명</p>
+                        </div>
+                        <div class="border-2 border-yellow-200 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="badge bg-yellow-100 text-yellow-700">중간</span>
+                                <span class="font-bold text-gray-900">field-check</span>
+                            </div>
+                            <p class="text-sm text-gray-600">타입 호환성, PWA</p>
+                        </div>
+                        <!-- Low maturity -->
+                        <div class="border-2 border-red-200 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="badge bg-red-100 text-red-700">초기</span>
+                                <span class="font-bold text-gray-900">marketing</span>
+                            </div>
+                            <p class="text-sm text-gray-600">API 인증 시행착오, 빌드 에러, 환경변수</p>
+                        </div>
+                        <div class="border-2 border-red-200 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="badge bg-red-100 text-red-700">초기</span>
+                                <span class="font-bold text-gray-900">sales-crm</span>
+                            </div>
+                            <p class="text-sm text-gray-600">채널톡 동기화, 배포 설정</p>
+                        </div>
+                        <div class="border-2 border-red-200 rounded-lg p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="badge bg-red-100 text-red-700">초기</span>
+                                <span class="font-bold text-gray-900">sales-pipeline</span>
+                            </div>
+                            <p class="text-sm text-gray-600">배포 반복 실패, API 인증 반복</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-sm text-gray-400 mt-12 pb-8">
+            <p>534개 커밋 분석 기반 · 2026-02-20 생성</p>
+            <p class="mt-1">새로운 패턴이 발견되면 업데이트합니다.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Toggle sections
+        function toggleSection(id) {
+            const el = document.getElementById(id);
+            const arrow = document.getElementById(id + '-arrow');
+            el.classList.toggle('open');
+            arrow.classList.toggle('rotate-180');
+        }
+
+        function expandAll() {
+            document.querySelectorAll('.collapse-content').forEach(el => el.classList.add('open'));
+            document.querySelectorAll('[id$="-arrow"]').forEach(el => el.classList.add('rotate-180'));
+        }
+
+        function collapseAll() {
+            document.querySelectorAll('.collapse-content').forEach(el => el.classList.remove('open'));
+            document.querySelectorAll('[id$="-arrow"]').forEach(el => el.classList.remove('rotate-180'));
+        }
+
+        // Search
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+
+            // Remove previous highlights
+            document.querySelectorAll('.search-highlight').forEach(el => {
+                el.outerHTML = el.textContent;
+            });
+
+            if (!query) return;
+
+            // Expand sections with matches and highlight
+            document.querySelectorAll('.section-card').forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    const collapseEl = card.querySelector('.collapse-content');
+                    if (collapseEl) collapseEl.classList.add('open');
+                }
+            });
+        });
+
+        // Persist checklist state
+        document.querySelectorAll('input[type="checkbox"]').forEach((cb, i) => {
+            const key = 'checklist-' + i;
+            cb.checked = localStorage.getItem(key) === 'true';
+            cb.addEventListener('change', () => {
+                localStorage.setItem(key, cb.checked);
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Expand the section
+                    const collapseEl = target.querySelector('.collapse-content');
+                    if (collapseEl && !collapseEl.classList.contains('open')) {
+                        collapseEl.classList.add('open');
+                        const arrow = target.querySelector('[id$="-arrow"]');
+                        if (arrow) arrow.classList.add('rotate-180');
+                    }
+                }
+            });
+        });
+
+        // First section open by default (already set in HTML)
+    </script>
+
+</body>
+</html>
