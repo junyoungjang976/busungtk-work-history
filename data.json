@@ -1,8 +1,9 @@
 {
-  "updated_at": "2026-02-22T01:00:57.421512Z",
+  "updated_at": "2026-02-23T01:01:13.668533Z",
   "repos": [
     "busungtk-ai-ideation",
     "busungtk-marketing",
+    "youtube-shorts-sermon",
     "busungtk-hvac-mentor",
     "busungtk-field-check",
     "busungtk-sales-crm",
@@ -12,7 +13,6 @@
     "busungtk-hub",
     "busungtk-asms",
     "busungtk-equipment",
-    "youtube-shorts-sermon",
     "busungtk-dotfiles",
     "busungtk-daily-report",
     "busungtk-as-diagnosis",
@@ -28,12 +28,19 @@
     "church-shorts-bg"
   ],
   "summary": {
-    "total_commits": 605,
+    "total_commits": 615,
     "total_prs": 0,
     "total_issues": 0,
-    "active_days": 26
+    "active_days": 27
   },
   "daily": {
+    "2026-02-22": {
+      "commits": 10,
+      "prs_opened": 0,
+      "prs_merged": 0,
+      "issues_opened": 0,
+      "issues_closed": 0
+    },
     "2026-02-21": {
       "commits": 21,
       "prs_opened": 0,
@@ -218,6 +225,86 @@
     }
   },
   "commits": [
+    {
+      "sha": "4928e4f",
+      "message": "docs: 작업 기록을 busungtk-marketing/docs/logs/로 이관 완료, 원본 삭제",
+      "author": "jangjoonyoung",
+      "date": "2026-02-22T16:17:16Z",
+      "url": "https://github.com/junyoungjang976/busungtk-ai-ideation/commit/4928e4f187cab867154e47dca60989666d788a0f",
+      "repo": "busungtk-ai-ideation"
+    },
+    {
+      "sha": "0642004",
+      "message": "docs: 작업 기록 docs/logs/로 이관 (2026-02-22, 2026-02-23)",
+      "author": "jangjoonyoung",
+      "date": "2026-02-22T16:17:08Z",
+      "url": "https://github.com/junyoungjang976/busungtk-marketing/commit/0642004e3e3606c833746d62134623c39b2d7677",
+      "repo": "busungtk-marketing"
+    },
+    {
+      "sha": "67d990a",
+      "message": "docs: 마케팅 허브 파이프라인 정상화 기록 추가 (2026-02-23)",
+      "author": "jangjoonyoung",
+      "date": "2026-02-22T16:11:21Z",
+      "url": "https://github.com/junyoungjang976/busungtk-ai-ideation/commit/67d990a7e30bdec4f7b4089504109b8cfe088ddd",
+      "repo": "busungtk-ai-ideation"
+    },
+    {
+      "sha": "32252b3",
+      "message": "feat: 마케팅 허브 데이터 파이프라인 정상화 — 예산 동기화, GA4 연결, 크론 자동화",
+      "author": "jangjoonyoung",
+      "date": "2026-02-22T16:07:24Z",
+      "url": "https://github.com/junyoungjang976/busungtk-marketing/commit/32252b3502264671e7373e0504702e7c094f2f43",
+      "repo": "busungtk-marketing"
+    },
+    {
+      "sha": "34d1565",
+      "message": "feat: GA4 연동 완료 — base64 서비스 계정 키 지원 + platform 타입 확장",
+      "author": "jangjoonyoung",
+      "date": "2026-02-22T15:48:36Z",
+      "url": "https://github.com/junyoungjang976/busungtk-marketing/commit/34d1565837e6e31157ab7af17a248953e29b7475",
+      "repo": "busungtk-marketing"
+    },
+    {
+      "sha": "fbf6194",
+      "message": "docs: 마케팅 메시지 자동화 기획 기록 추가 (2026-02-23)",
+      "author": "jangjoonyoung",
+      "date": "2026-02-22T15:30:40Z",
+      "url": "https://github.com/junyoungjang976/busungtk-ai-ideation/commit/fbf619481a4b83881bf1a577d2f20c21f5a3295b",
+      "repo": "busungtk-ai-ideation"
+    },
+    {
+      "sha": "a29b4ad",
+      "message": "feat: campaigns 테이블에 display_name 컬럼 추가",
+      "author": "jangjoonyoung",
+      "date": "2026-02-22T15:17:07Z",
+      "url": "https://github.com/junyoungjang976/busungtk-marketing/commit/a29b4adb7ee9a869f5c3c41c0bdf1380814d8e34",
+      "repo": "busungtk-marketing"
+    },
+    {
+      "sha": "d679d06",
+      "message": "docs: 교회 신도 모집 마케팅 기획 기록 추가 (2026-02-23)",
+      "author": "jangjoonyoung",
+      "date": "2026-02-22T15:06:12Z",
+      "url": "https://github.com/junyoungjang976/busungtk-ai-ideation/commit/d679d0670fe7378b8d2b65e221b2c3f9bd11de1a",
+      "repo": "busungtk-ai-ideation"
+    },
+    {
+      "sha": "bcaeafa",
+      "message": "refactor: UI/UX 전면 개선 및 기술 부채 해소 (Critical + Major 20항목)",
+      "author": "jangjoonyoung",
+      "date": "2026-02-22T14:32:24Z",
+      "url": "https://github.com/junyoungjang976/busungtk-marketing/commit/bcaeafa9987ee194230b8c5a9baa2be7f58da2b9",
+      "repo": "busungtk-marketing"
+    },
+    {
+      "sha": "8a3b7b0",
+      "message": "feat: 내가 새 일을 행하리라 쇼츠 하이라이트 분석 (26.02.22 설교)",
+      "author": "jangjoonyoung",
+      "date": "2026-02-22T12:44:57Z",
+      "url": "https://github.com/junyoungjang976/youtube-shorts-sermon/commit/8a3b7b001cba669c8026653840778f8b0fb94f7d",
+      "repo": "youtube-shorts-sermon"
+    },
     {
       "sha": "960cd85",
       "message": "docs: 마케팅 허브 Meta/GA4 구현 작업 기록 (2026-02-22)",
@@ -1737,86 +1824,6 @@
       "date": "2026-02-17T12:42:54Z",
       "url": "https://github.com/junyoungjang976/gumi-church/commit/9f5874983eb1615c1b100a38ea932896c9ee21ab",
       "repo": "gumi-church"
-    },
-    {
-      "sha": "2dee36a",
-      "message": "chore: Vercel Analytics 추가",
-      "author": "jangjoonyoung",
-      "date": "2026-02-17T12:42:51Z",
-      "url": "https://github.com/junyoungjang976/busungtk-marketing/commit/2dee36a5fdc91caaee51699bd96fa7eab2f1ea99",
-      "repo": "busungtk-marketing"
-    },
-    {
-      "sha": "436ec7b",
-      "message": "chore: Vercel Analytics 추가",
-      "author": "jangjoonyoung",
-      "date": "2026-02-17T12:42:49Z",
-      "url": "https://github.com/junyoungjang976/busungtk-kitchen-planner/commit/436ec7b4b537667ad574d93db866d5ee985fad3e",
-      "repo": "busungtk-kitchen-planner"
-    },
-    {
-      "sha": "376022b",
-      "message": "chore: Vercel Analytics 추가",
-      "author": "jangjoonyoung",
-      "date": "2026-02-17T12:42:47Z",
-      "url": "https://github.com/junyoungjang976/busungtk-hvac-mentor/commit/376022b510df1c55b931870bf8c0f1899f7b3db6",
-      "repo": "busungtk-hvac-mentor"
-    },
-    {
-      "sha": "9468cc1",
-      "message": "chore: Vercel Analytics 추가",
-      "author": "jangjoonyoung",
-      "date": "2026-02-17T12:42:45Z",
-      "url": "https://github.com/junyoungjang976/busungtk-field-check/commit/9468cc1703af2998745d13566b21ccd89497a2fe",
-      "repo": "busungtk-field-check"
-    },
-    {
-      "sha": "c287d80",
-      "message": "chore: Vercel Analytics 추가",
-      "author": "jangjoonyoung",
-      "date": "2026-02-17T12:42:43Z",
-      "url": "https://github.com/junyoungjang976/busungtk-sales-pipeline/commit/c287d8048d7ce516aa0dfb965666cdcde9cd8bb0",
-      "repo": "busungtk-sales-pipeline"
-    },
-    {
-      "sha": "4bc2c93",
-      "message": "chore: vitest 테스트 인프라 + Vercel Analytics 추가",
-      "author": "jangjoonyoung",
-      "date": "2026-02-17T12:42:33Z",
-      "url": "https://github.com/junyoungjang976/busungtk-daily-report/commit/4bc2c9321dd8051488a153ab07f54657bdb746cd",
-      "repo": "busungtk-daily-report"
-    },
-    {
-      "sha": "9edd06b",
-      "message": "chore: vitest 테스트 인프라 + Vercel Analytics 추가",
-      "author": "jangjoonyoung",
-      "date": "2026-02-17T12:42:32Z",
-      "url": "https://github.com/junyoungjang976/busungtk-sales-crm/commit/9edd06b70bff45ab809b287fc33dd82597ff857d",
-      "repo": "busungtk-sales-crm"
-    },
-    {
-      "sha": "f240c99",
-      "message": "chore: vitest 테스트 인프라 + Vercel Analytics 추가",
-      "author": "jangjoonyoung",
-      "date": "2026-02-17T12:42:30Z",
-      "url": "https://github.com/junyoungjang976/busungtk-asms/commit/f240c99634788251e6338d0e4c5231c2dc535cb0",
-      "repo": "busungtk-asms"
-    },
-    {
-      "sha": "8b0cb0c",
-      "message": "chore: vitest 테스트 인프라 + Vercel Analytics 추가",
-      "author": "jangjoonyoung",
-      "date": "2026-02-17T12:42:28Z",
-      "url": "https://github.com/junyoungjang976/busungtk-equipment/commit/8b0cb0cafbba2a1ee4bbdbdc7b9e4ec49123df32",
-      "repo": "busungtk-equipment"
-    },
-    {
-      "sha": "d45d681",
-      "message": "chore: vitest 테스트 인프라 + Vercel Analytics 추가",
-      "author": "jangjoonyoung",
-      "date": "2026-02-17T12:42:25Z",
-      "url": "https://github.com/junyoungjang976/busungtk-hub/commit/d45d6814ae4e2ca28760adebf97c3d17a30bb3d1",
-      "repo": "busungtk-hub"
     }
   ],
   "pull_requests": [],
